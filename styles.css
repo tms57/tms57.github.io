@@ -1,3 +1,7 @@
 body {
-  background: rgb(163, 225, 236);
+  background: lavender;
+}
+
+ul li a {
+  text-decoration: none;
 }
