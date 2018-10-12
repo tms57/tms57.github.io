@@ -4,17 +4,6 @@ html, body, * {
   padding: 0;
 }
 
-.page-wraper, html, body {
-  /* Flex trick
-    Make oontainers 100% so that children inherit this height and stretch to fill vertical space
-  */
-  /* min-height: 100vh; */
-  /*
-  height: 100%;
-  With 100% content is cut off!
-  */
-}
-
 .page-wraper {
 
   display: flex;
