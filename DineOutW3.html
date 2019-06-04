@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dine Out W3.CSS</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+
+
+    body {
+      /* padding: 10px 5% 0 5%; */
+      max-width: 500px;
+      margin: 0 auto;  /* center */
+    }
+
+    .w3-input {
+      height: 25px;
+      border: 1px solid lightgray;
+    }
+    .w3-row {
+      margin-bottom: 10px;
+    }
+    button {
+      border-radius: 5px;
+      border: 1px solid #1fa51f;
+    }
+
+    input[type=text]:focus,
+    input[type=number]:focus,
+    button:focus {
+      border: 1px solid #1fa51f;
+      /* border-radius: 3px; */
+      outline: none;
+    }
+
+
+    .tipOptions {
+      font-size: 0.75rem;
+      padding-left: 8px;
+    }
+    .w3-radio {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      top: 4px;
+    }
+
+    .ways {
+      padding-left: 8px;
+    }
+
+    /* Table */
+    .hide {
+      display: none;
+    }
+
+    #info {
+      margin-top: 10px;
+    }
+    #info .td-label,
+    #info .w3-right {
+      padding: 3px 0 3px 0;
+    }
+    #msgGrandTotal.w3-right {
+      border-top: 1px solid black;
+      background: lightgray;
+    }
+    .totLine {
+      background: lightgray;
+    }
+
+
+  </style>
+</head>
+<body>
+
+
+    <h2 class="w3-center">Dine Out</h2>
+
+    <div class="w3-container">
+
+      <div class="w3-row">
+        <div class="w3-col s6">
+          <label for="totalBill">Total bill amount:</label>
+        </div>
+        <div class="w3-col s6">
+            <input class="w3-input w3-round" id="totalBill" type="text">
+        </div>
+      </div>
+
+      <div class="w3-row">
+        <div class="w3-col s6">
+          <label for="tax">Tax (%):</label>
+        </div>
+        <div class="w3-col s6">
+          <input class="w3-input w3-round" id="tax" type="text">
+        </div>
+      </div>
+
+      <div class="w3-row">
+        <div class="w3-col s6">
+          <label for="tip">Tip:</label>
+        </div>
+        <div class="w3-col s3">
+          <input class="w3-input w3-round" id="tip" type="text">
+        </div>
+        <div class="w3-col s3 tipOptions">
+          <input  class="w3-radio" type="radio" id="percent" name="tipOpt" checked>
+          <label for="percent">%</label>
+          <input class="w3-radio" type="radio" id="amount"name="tipOpt" >
+          <label for="amount">$</label>
+        </div>
+      </div>
+
+      <div class="w3-row">
+          <div class="w3-col s6">
+            <label for="num">Split</label>
+          </div>
+          <div class="w3-col s3">
+            <input class="w3-input w3-round" id="num" type="text">
+          </div>
+          <div class="w3-col s3">
+            <label class="ways">ways.</label>
+          </div>
+        </div>
+
+        <button id="calc" class="w3-button w3-block w3-green">Calculate</button>
+
+
+
+    <table id="info" class="w3-table hide">
+
+      <tbody>
+
+        <tr>
+          <td class="td-label">Bill before tax:</td>
+          <td id="msgBill" class="w3-right"></td>
+        </tr>
+        <tr>
+          <td class="td-label">Tax amount:</td>
+          <td id="msgTaxAmout" class="w3-right"></td>
+        </tr>
+        <tr>
+          <td class="td-label">Tip amount:</td>
+          <td id="msgTipAmout" class="w3-right"></td>
+        </tr>
+        <tr class="totLine">
+          <td class="td-label">Grand total:</td>
+          <td id="msgGrandTotal" class="w3-right"></td>
+        </tr>
+        <tr>
+          <td class="td-label">&nbsp;</td>
+          <td class="td-label">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="td-label">Each diner pays:</td>
+          <td id="split" class="w3-right"></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+
+  <script>
+
+    var calc = document.getElementById('calc');
+    calc.addEventListener('click', process, false);
+
+    function process() {
+
+      var totalBill = parseFloat(document.getElementById('totalBill').value);
+
+      var taxRate = parseFloat(document.getElementById('tax').value) / 100;   // converting to decimal
+
+      var billBeforeTax = totalBill / (1 + taxRate);
+
+      var taxAmount = billBeforeTax * taxRate;
+
+      // radio buttons
+      var tipAmount = 0;
+      if (document.getElementById('percent').checked) {
+          tipAmount = parseFloat(document.getElementById('tip').value) / 100 * billBeforeTax;
+      } else {
+          tipAmount = parseFloat(document.getElementById('tip').value);
+      }
+
+
+      var n = parseInt(document.getElementById('num').value);
+
+      var billTotal = (billBeforeTax + taxAmount + tipAmount);
+
+      var each = billTotal / n;
+
+      document.getElementById('msgBill').innerHTML = billBeforeTax.toFixed(2);
+      document.getElementById('msgTaxAmout').innerHTML = taxAmount.toFixed(2);
+      document.getElementById('msgTipAmout').innerHTML = tipAmount.toFixed(2);
+      document.getElementById('msgGrandTotal').innerHTML = "$ " + billTotal.toFixed(2);
+      document.getElementById('split').innerHTML = "$ " + each.toFixed(2);
+
+      document.getElementById('info').classList.remove("hide");
+    }
+  </script>
+
+
+</body>
+</html>

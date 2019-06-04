@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dine Out</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    .form-group.row {
+      margin: 5px auto;
+      /* width: 90%; */
+    }
+    .form-group.row label {
+      padding-right: 0;
+    }
+    .form-group.row .col-3,
+    .form-group.row .col-4,
+    .form-group.row .col-5 {
+      padding-left: 0;
+    }
+    .table>tbody>tr>td.td-cust {
+        border: none!important;
+    }
+    table tbody tr td.td-cust {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .table>tbody>tr>td.td-cust#msgTipAmout {
+      border-bottom: 2px solid black!important;
+    }
+  </style>
+</head>
+<body>
+
+
+    <h2 class="text-center mt-4 mb-4">Dine Out</h2>
+  <div class="container">
+    <form>
+      <div class="form-group row">
+        <label for="totalBill" class="col-4 col-form-label">Total bill amount:</label>
+        <div class="col-5">
+          <input type="text" class="form-control form-control-sm" id="totalBill" placeholder="(including tax)">
+        </div>
+      </div>
+    </form>
+
+    <form>
+      <div class="form-group row">
+        <label for="tax" class="col-4 col-form-label">Tax (%):</label>
+        <div class="col-5">
+          <input type="number" class="form-control form-control-sm" id="tax" value="">
+        </div>
+      </div>
+    </form>
+
+    <form>
+        <div class="form-group row">
+          <label for="tip" class="col-4 col-form-label">Tip:</label>
+          <div class="col-3">
+            <input type="text" class="form-control form-control-sm" id="tip" placeholder="15">
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="percent" name="customRadioInline1" checked class="custom-control-input">
+              <label class="custom-control-label" for="percent">%</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="amount" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="amount">$</label>
+          </div>
+        </div>
+
+      </form>
+
+      <form>
+          <div class="form-group row">
+            <label for="num" class="col-4 col-form-label">Split</label>
+            <div class="col-3">
+              <input type="text" class="form-control form-control-sm" id="num" value="">
+            </div>
+            <label class="col-3 col-form-label">ways.</label>
+          </div>
+        </form>
+
+
+      <button type="button" id="calc" class="btn btn-success btn-block mb-4">Calculate</button>
+
+      <table id="info" class="table">
+
+        <tbody>
+
+          <tr>
+            <td class="td-cust">Bill before tax:</td>
+            <td id="msgBill" class="td-cust text-right"></td>
+          </tr>
+          <tr>
+            <td class="td-cust">Tax amount:</td>
+            <td id="msgTaxAmout" class="td-cust text-right"></td>
+          </tr>
+          <tr>
+            <td class="td-cust">Tip amount:</td>
+            <td id="msgTipAmout" class="td-cust text-right"></td>
+          </tr>
+          <tr>
+            <td class="td-cust">Grand total:</td>
+            <td id="msgGrandTotal" class="td-cust text-right"></td>
+          </tr>
+          <tr>
+            <td class="td-cust">&nbsp;</td>
+            <td class="td-cust text-right">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="td-cust">Each diner pays:</td>
+            <td id="split" class="td-cust text-right"></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+  </div>
+
+  <script>
+
+    var calc = document.getElementById('calc');
+    calc.addEventListener('click', process, false);
+
+    function process() {
+
+      var totalBill = parseFloat(document.getElementById('totalBill').value);
+
+      var taxRate = parseFloat(document.getElementById('tax').value) / 100;   // converting to decimal
+
+      var billBeforeTax = totalBill / (1 + taxRate);
+
+      var taxAmount = billBeforeTax * taxRate;
+
+      // radio buttons
+      var tipAmount = 0;
+      if (document.getElementById('percent').checked) {
+          tipAmount = parseFloat(document.getElementById('tip').value) / 100 * billBeforeTax;
+      } else {
+          tipAmount = parseFloat(document.getElementById('tip').value);
+      }
+
+
+      var n = parseInt(document.getElementById('num').value);
+
+      var billTotal = (billBeforeTax + taxAmount + tipAmount);
+
+      var each = billTotal / n;
+
+      document.getElementById('msgBill').innerHTML = billBeforeTax.toFixed(2);
+      document.getElementById('msgTaxAmout').innerHTML = taxAmount.toFixed(2);
+      document.getElementById('msgTipAmout').innerHTML = tipAmount.toFixed(2);
+      document.getElementById('msgGrandTotal').innerHTML = "$ " + billTotal.toFixed(2);
+      document.getElementById('split').innerHTML = "$ " + each.toFixed(2);
+
+
+    }
+  </script>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
