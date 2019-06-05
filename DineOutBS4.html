@@ -9,45 +9,51 @@
 
   <style>
     .container {
-      padding-right: 20px;
-      padding-left: 20px;
+      padding-right: 10px;
+      padding-left: 10px;
+      max-width: 500px;
+      margin: 0 auto;  /* center */
     }
     .form-group.row {
       margin: 5px auto;
-      /* width: 90%; */
-    }
-    .form-group.row label {
-      padding-right: 0;
-    }
-    .form-group.row .col-3,
-    .form-group.row .col-4,
-    .form-group.row .col-5 {
-      padding-left: 0;
-    }
-    .table>tbody>tr>td.td-cust {
-        border: none!important;
-    }
-    table tbody tr td.td-cust {
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-left: 0;
-      padding-right: 0;
     }
 
-    .table>tbody>tr>td.td-cust#msgTipAmout {
+    input[type="text"],
+    input[type="number"] {
+      font-size: 16px;
+    }
+
+    .table>tbody>tr>td {
+        border: none!important;
+    }
+    table tbody tr td.td-label,
+    table tbody tr td.money {
+      padding: 0;
+    }
+
+    .hide {
+      display: none;
+    }
+    .td-label {
+      width: 75%;
+    }
+    .money {
+      /* text-align: right; */
+    }
+    .table>tbody>tr>td#msgTipAmout {
       border-bottom: 2px solid black!important;
     }
   </style>
 </head>
 <body>
 
-
-    <h2 class="text-center mt-4 mb-4">Dine Out</h2>
   <div class="container">
+    <h2 class="text-center mt-4 mb-4">Dine Out (BS 4)</h2>
+
     <form>
       <div class="form-group row">
-        <label for="totalBill" class="col-4 col-form-label">Total bill amount:</label>
-        <div class="col-5">
+        <label for="totalBill" class="col-6 col-form-label px-0">Total bill amount:</label>
+        <div class="col-6 px-0">
           <input type="text" class="form-control form-control-sm" id="totalBill" placeholder="(including tax)">
         </div>
       </div>
@@ -55,8 +61,8 @@
 
     <form>
       <div class="form-group row">
-        <label for="tax" class="col-4 col-form-label">Tax (%):</label>
-        <div class="col-5">
+        <label for="tax" class="col-6 col-form-label px-0">Tax (%):</label>
+        <div class="col-6 px-0">
           <input type="number" class="form-control form-control-sm" id="tax" value="">
         </div>
       </div>
@@ -64,62 +70,65 @@
 
     <form>
         <div class="form-group row">
-          <label for="tip" class="col-4 col-form-label">Tip:</label>
-          <div class="col-3">
+          <label for="tip" class="col-6 col-form-label px-0">Tip:</label>
+          <div class="col-2 px-0">
             <input type="text" class="form-control form-control-sm" id="tip" placeholder="15">
           </div>
-          <div class="custom-control custom-radio custom-control-inline">
+          <div class="tipOptions col-4 pl-3 pr-0">
+            <div class="custom-control custom-radio custom-control-inline m1-1 mr-0">
               <input type="radio" id="percent" name="customRadioInline1" checked class="custom-control-input">
               <label class="custom-control-label" for="percent">%</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
+            </div>
+          <div class="custom-control custom-radio custom-control-inline mr-0">
               <input type="radio" id="amount" name="customRadioInline1" class="custom-control-input">
               <label class="custom-control-label" for="amount">$</label>
           </div>
+          </div>
+
         </div>
 
-      </form>
+    </form>
 
       <form>
           <div class="form-group row">
-            <label for="num" class="col-4 col-form-label">Split</label>
-            <div class="col-3">
+            <label for="num" class="col-6 col-form-label px-0">Split</label>
+            <div class="col-2 px-0">
               <input type="text" class="form-control form-control-sm" id="num" value="">
             </div>
-            <label class="col-3 col-form-label">ways.</label>
+            <label class="col-4 col-form-label">ways.</label>
           </div>
         </form>
 
 
       <button type="button" id="calc" class="btn btn-success btn-block mb-4">Calculate</button>
 
-      <table id="info" class="table">
+      <table id="info" class="table hide">
 
         <tbody>
 
           <tr>
-            <td class="td-cust">Bill before tax:</td>
-            <td id="msgBill" class="td-cust text-right"></td>
+            <td class="td-label">Bill before tax:</td>
+            <td id="msgBill" class="money text-right"></td>
           </tr>
           <tr>
-            <td class="td-cust">Tax amount:</td>
-            <td id="msgTaxAmout" class="td-cust text-right"></td>
+            <td class="td-label">Tax amount:</td>
+            <td id="msgTaxAmout" class="money text-right"></td>
           </tr>
           <tr>
-            <td class="td-cust">Tip amount:</td>
-            <td id="msgTipAmout" class="td-cust text-right"></td>
+            <td class="td-label">Tip amount:</td>
+            <td id="msgTipAmout" class="money text-right"></td>
           </tr>
           <tr>
-            <td class="td-cust">Grand total:</td>
-            <td id="msgGrandTotal" class="td-cust text-right"></td>
+            <td class="td-label">Grand total:</td>
+            <td id="msgGrandTotal" class="money text-right"></td>
           </tr>
           <tr>
-            <td class="td-cust">&nbsp;</td>
-            <td class="td-cust text-right">&nbsp;</td>
+            <td class="td-label">&nbsp;</td>
+            <td class="money text-right">&nbsp;</td>
           </tr>
           <tr>
-            <td class="td-cust">Each diner pays:</td>
-            <td id="split" class="td-cust text-right"></td>
+            <td class="td-label">Each diner pays:</td>
+            <td id="split" class="money text-right"></td>
           </tr>
 
         </tbody>
@@ -163,6 +172,7 @@
       document.getElementById('msgGrandTotal').innerHTML = "$ " + billTotal.toFixed(2);
       document.getElementById('split').innerHTML = "$ " + each.toFixed(2);
 
+      document.getElementById('info').classList.remove("hide");
 
     }
   </script>
