@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dine Out (Flexbox)</title>
+
+  <style>
+
+    html, body, * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      padding: 0 10px;
+      max-width: 500px;
+/*      margin: 0 auto;   center */
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    input[type=text],
+    input[type=number] {
+      border-radius: 3px;
+      border: 1px solid lightgray;
+      padding-left: 5px;
+      font-size: 16px;     /* Zoom issue */
+    }
+
+    input[type=text]:focus,
+    input[type=number]:focus,
+    button:focus {
+      border: 1px solid #1fa51f;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .userInput {
+      width: 100%;
+      height: 30px;
+      margin-bottom: 10px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .label {
+      width: 40%;
+      padding: 0;
+    }
+    .textBox {
+      width: 55%;
+      padding: 0;
+    }
+
+    .row3-4 {
+      display: flex;
+      margin: 0 0 10px 0;
+    }
+    .row3-4 .label {
+      width: 45%;
+    }
+    .row3-4 .shortBox {
+      width: 20%;
+    }
+    .row3-4 .thirdItem {
+      width: 25%;
+      margin-left: 8px;
+    }
+      .tipOptions {
+        display: flex;
+        padding-top: 3px;
+      }
+      .tipOptions input,
+      .tipOptions label {
+        width: 25%;
+      }
+
+
+    button {
+      width: 100%;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      background: #1fa51f;
+      color: white;
+    }
+
+
+    table {
+      margin-top: 10px;
+      width: 100%;
+      table-layout: fixed;
+      overflow-wrap: break-word;
+
+    }
+    .hide {
+      display: none;
+    }
+    table tbody tr td.td-cust {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .td-label {
+      width: 75%;
+    }
+    .money {
+      text-align: right;
+    }
+
+    table>tbody>tr>td.money#msgTipAmout {
+      border-bottom: 2px solid black!important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="">Dine Out (Flexbox)</h2>
+
+    <form class="userInput">
+      <label for="totalBill" class="label">Total bill amount:</label>
+      <input type="text" class="textBox" id="totalBill" placeholder="(including tax)">
+    </form>
+
+    <form class="userInput">
+      <label for="tax" class="label">Tax (%):</label>
+      <input type="text" class="textBox" id="tax">
+    </form>
+
+    <form class="row3-4">
+      <label class="label" for="tip" class="label">Tip:</label>
+      <input type="text" class="shortBox" id="tip" placeholder="15">
+      <div class="thirdItem tipOptions">
+        <input type="radio" id="percent" name="tipOpt" checked>
+        <label for="percent">%</label>
+        <input type="radio" id="amount"name="tipOpt" >
+        <label for="amount">$</label>
+      </div>
+
+    </form>
+
+
+
+    <form class="row3-4">
+      <label for="num" class="label">Split</label>
+      <input type="number" class="shortBox split" id="num">
+      <label class="thirdItem">ways.</label>
+    </form>
+
+    <button id="calc">Calculate</button>
+
+    <table id="info" class="table hide">
+
+      <tbody>
+
+        <tr>
+          <td class="td-label">Bill before tax:</td>
+          <td id="msgBill" class="money"></td>
+        </tr>
+        <tr>
+          <td class="td-label">Tax amount:</td>
+          <td id="msgTaxAmout" class="money"></td>
+        </tr>
+        <tr>
+          <td class="td-label">Tip amount:</td>
+          <td id="msgTipAmout" class="money"></td>
+        </tr>
+        <tr>
+          <td class="td-label">Grand total:</td>
+          <td id="msgGrandTotal" class="money"></td>
+        </tr>
+        <tr>
+          <td class="td-label">&nbsp;</td>
+          <td class="td-label">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="td-label">Each diner pays:</td>
+          <td id="split" class="money"></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+
+
+
+
+
+
+  <script>
+
+    var calc = document.getElementById('calc');
+    calc.addEventListener('click', process, false);
+
+    function process() {
+
+      var totalBill = parseFloat(document.getElementById('totalBill').value);
+
+      var taxRate = parseFloat(document.getElementById('tax').value) / 100;   // converting to decimal
+
+      var billBeforeTax = totalBill / (1 + taxRate);
+
+      var taxAmount = billBeforeTax * taxRate;
+
+      // radio buttons
+      var tipAmount = 0;
+      if (document.getElementById('percent').checked) {
+          tipAmount = parseFloat(document.getElementById('tip').value) / 100 * billBeforeTax;
+      } else {
+          tipAmount = parseFloat(document.getElementById('tip').value);
+      }
+
+
+      var n = parseInt(document.getElementById('num').value);
+
+      var billTotal = (billBeforeTax + taxAmount + tipAmount);
+
+      var each = billTotal / n;
+
+      document.getElementById('msgBill').innerHTML = billBeforeTax.toFixed(2);
+      document.getElementById('msgTaxAmout').innerHTML = taxAmount.toFixed(2);
+      document.getElementById('msgTipAmout').innerHTML = tipAmount.toFixed(2);
+      document.getElementById('msgGrandTotal').innerHTML = "$ " + billTotal.toFixed(2);
+      document.getElementById('split').innerHTML = "$ " + each.toFixed(2);
+
+      document.getElementById('info').classList.remove("hide");
+    }
+  </script>
+
+
+</body>
+</html>
