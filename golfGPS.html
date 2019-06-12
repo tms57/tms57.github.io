@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shot Tracker</title>
+
+  <style>
+
+    html, body, * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      padding: 10px 5% 0 5%;
+      max-width: 500px;
+      margin: 0 auto;  /* center */
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    button {
+      width: 100%;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      background: #1fa51f;
+      color: white;
+      font-size: 20px;
+    }
+
+    .measurement {
+      /* display: inline-block; */
+      width: 135px;
+      margin: 20px auto;
+    }
+
+    #test {
+      margin: 20px 0 20px 0;
+      background: yellow;
+    }
+
+  </style>
+</head>
+<body>
+
+
+    <h1 class="">Shot Distance</h1>
+
+    <button id="track">MARK</button>
+
+    <h2>Distance: <span id="distance"></span></h2>
+
+    <span id="test"></span>
+
+    <form class="measurement clearfix">
+
+      <div class="measurement">
+        <input type="radio" id="yards" name="units" checked>
+        <label for="yards">Yards</label>
+        <input type="radio" id="amount" name="units" >
+        <label for="meters">Meters</label>
+      </div>
+
+    </form>
+
+
+
+
+
+
+
+
+  <script>
+    var tracking = false;
+    var display = document.getElementById("test");
+
+    // button click to start tracking distance
+    var track = document.getElementById('track');
+    track.addEventListener('click', function() {
+      tracking = !tracking;   // toggle
+      if (tracking) {
+          track.style.backgroundColor = 'orange';
+          //calculateDistance();
+          getLocation();
+      } else {
+          track.style.backgroundColor = 'green';
+
+          document.getElementById('distance').innerHTML = "0";
+      }
+
+    }, false);
+
+
+    function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(showPosition);
+    } else {
+      display.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    display.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+    console.log("Speed: " + position.coords.speed);
+  }
+  </script>
+
+
+</body>
+</html>
