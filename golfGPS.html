@@ -60,14 +60,13 @@
 
     <h2>Distance: <span id="distance"></span></h2>
 
-    <span id="test"></span>
-
     <form class="measurement clearfix">
 
       <div class="measurement">
         <input type="radio" id="yards" name="units" checked>
         <label for="yards">Yards</label>
-        <input type="radio" id="amount" name="units" >
+
+        <input type="radio" id="meters" name="units" >
         <label for="meters">Meters</label>
       </div>
 
@@ -82,38 +81,112 @@
 
   <script>
     var tracking = false;
-    var display = document.getElementById("test");
+    var display = document.getElementById("distance");
+    var myTimer = null;
+
+    var x1 = null, y1 = null; // initial coords
+    var x2 = null, y2 = null; // current coords
+    var units = "yards";
+
+    var options = {   // geoloaction options
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      if (x1 === null && y1 === null) {
+        x1 = crd.latitude;
+        y1 = crd.longitude;
+        console.log('Initail x1: ' + x1);
+        console.log('Initail y1: ' + y1);
+    } else {
+        x2 = crd.latitude;
+        y2 = crd.longitude;
+        console.log('Initail x2: ' + x2);
+        console.log('Initail y2: ' + y2);
+    }
+
+    }
+
+    function error(err) {   // Geolocation error
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
 
     // button click to start tracking distance
     var track = document.getElementById('track');
     track.addEventListener('click', function() {
-      tracking = !tracking;   // toggle
-      if (tracking) {
-          track.style.backgroundColor = 'orange';
-          //calculateDistance();
-          getLocation();
-      } else {
-          track.style.backgroundColor = 'green';
+      tracking = !tracking; //toggle
 
-          document.getElementById('distance').innerHTML = "0";
+      if (tracking) {
+          getLocation();  // get initial coords
+          myTimer = setInterval(calculateDistance, 250);
+          track.style.backgroundColor = 'orange';
+
+
+
+      } else {
+          clearInterval(myTimer);
+          x1 = y1 = null;
+
+          track.style.backgroundColor = 'green';
+          n = 0;
+          display.innerHTML = 0;
+      }
+
+      if (document.getElementById('yards').checked) {
+          units = ' Yards';
+      } else {
+          units = ' Meters';
       }
 
     }, false);
 
 
+
     function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(showPosition);
-    } else {
-      display.innerHTML = "Geolocation is not supported by this browser.";
-    }
+      navigator.geolocation.getCurrentPosition(success, error, options);
   }
 
-  function showPosition(position) {
-    display.innerHTML = "Latitude: " + position.coords.latitude +
-    "<br>Longitude: " + position.coords.longitude;
-    console.log("Speed: " + position.coords.speed);
+  function calculateDistance() {
+
+    var distance = 0
+
+    if (x2 === null && y2 === null) {
+        document.getElementById('distance').innerHTML = 0;
+    }
+
+    getLocation();
+    distance = getDistanceInMeters(x1, y1, x2, y2);
+
+    if (units === ' Yards') {
+      distance = distance * 1.09361;
+    }
+
+    document.getElementById('distance').innerHTML = distance + units;
   }
+
+  function getDistanceInMeters(x1, y1, x2, y2) {
+  var R = 6371000; // Radius of the earth in meters
+  var dLat = deg2rad(x2 - x1);  // deg2rad below
+  var dLon = deg2rad(y2 - y1);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(x1)) * Math.cos(deg2rad(x2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c; // Distance in m
+  return d;
+}
+
+  function deg2rad(deg) {
+    return deg * (Math.PI/180)
+  }
+
+
   </script>
 
 
