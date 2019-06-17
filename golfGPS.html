@@ -70,6 +70,7 @@
         <label for="meters">Meters</label>
       </div>
 
+      <p id="testing"></p>
     </form>
 
 
@@ -90,12 +91,13 @@
 
     var options = {   // geoloaction options
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 1000,
       maximumAge: 0
     };
 
     function success(pos) {
       var crd = pos.coords;
+      var msg = '';  // testing
 
       if (x1 === null && y1 === null) {
         x1 = crd.latitude;
@@ -105,8 +107,15 @@
     } else {
         x2 = crd.latitude;
         y2 = crd.longitude;
-        console.log('Initail x2: ' + x2);
-        console.log('Initail y2: ' + y2);
+
+        // testing
+        msg = "Lat: " + x2 + '\n' + "Long: " + y2;
+        document.getElementById('testing').innerHTML = msg;
+
+
+        // testing
+        // console.log('Initail x2: ' + x2);
+        // console.log('Initail y2: ' + y2);
     }
 
     }
@@ -159,6 +168,8 @@
     }
 
     getLocation();
+
+
     distance = getDistanceInMeters(x1, y1, x2, y2);
 
     if (units === ' Yards') {
