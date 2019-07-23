@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Feature Queries</title>
+</head>
+<style>
+
+  h1 {
+    text-align: center;
+  }
+  @supports (initial-letter: 4) or
+    (webkit-initial-letter: 4) {
+      p::first-letter {
+        color: rgba(255, 190, 150, 0.9);
+        font-weight: bold;
+        margin-right: 0.5em;
+
+        -webkit-initial-letter: 4;
+        initial-letter: 4;
+      }
+    }
+
+    p {
+      padding: 1em 4em;
+    }
+</style>
+<body>
+
+  <h1>Feature Queries</h1>
+
+  <p>Not all browsers support the initial letter (or drop cap) feature.  In fact as of July 2019 only Safari browsers support this feature.</p>
+  <p>So what do we do for browsers that have no way of dealing with initial letters?</p>
+
+</body>
+</html>

@@ -79,7 +79,6 @@
 
 
 
-
   <script>
     var tracking = false;
     var display = document.getElementById("distance");
@@ -104,6 +103,7 @@
         y1 = crd.longitude;
         console.log('Initail x1: ' + x1);
         console.log('Initail y1: ' + y1);
+        console.log('Accuracy: ', crd.accuracy);
     } else {
         x2 = crd.latitude;
         y2 = crd.longitude;
@@ -179,7 +179,7 @@
     document.getElementById('distance').innerHTML = distance + units;
   }
 
-  function getDistanceInMeters(x1, y1, x2, y2) {
+  function getDistanceInMeters(x1, y1, x2, y2) {    // Heavysine method
   var R = 6371000; // Radius of the earth in meters
   var dLat = deg2rad(x2 - x1);  // deg2rad below
   var dLon = deg2rad(y2 - y1);
