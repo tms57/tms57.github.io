@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mileage</title>
+  <link rel="stylesheet" href="flexGrid.css">
+</head>
+
+<body>
+
+  <header>
+    <h2 class="">Mileage Logger</h2>
+    <nav class="menu" id="menu">
+
+      <a class="menuItem" id="m-fillUp" href="#fillUp">Fill Up</a>
+
+      <a class="menuItem" id="m-trip" href="#trip">Trip</a>
+
+      <a class="menuItem" id="m-log" href="#log">Log</a>
+
+      <a class="menuItem" id="m-settings" href="#settings">Settings</a>
+
+    </nav class="menu">
+  </header>
+
+  <section class="fillUp menuMargin" id="fillUp">
+
+    <h2>Fill Up</h2>
+
+    <div class="row">
+      <label for="fillAmount" class="label">Fill up ($):</label>
+
+      <input type="number" class="textBox" id="fillAmount" placeholder="Fill up amount" required>
+
+    </div>
+
+    <div class="row">
+
+      <label class="label" for="gasPrice">Gas Price ($):</label>
+
+      <input type="number" class="textBox" id="gasPrice" placeholder="" required>
+
+    </div>
+
+    <div class="row">
+
+      <label for="odometer" class="label">Odometer:</label>
+
+      <input type="number" class="textBox" id="odometer" required>
+
+    </div>
+
+    <button id="submit">Submit</button>
+
+    <section class="quickStats">
+
+      <table id="info" class="QuickStatsTable">
+
+        <tbody>
+
+          <tr>
+            <th colspan="3">
+              <h3>Last Fill</h3>
+            </th>
+          </tr>
+          <tr>
+            <td class="qs-label">Fill Amount:</td>
+            <td id="qs-fillAmount" class="data"></td>
+            <td class="qs-units">$</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Gas Price:</td>
+            <td id="qs-price" class="data"></td>
+            <td class="qs-units">$/L</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Last Odometer:</td>
+            <td id="qs-odometer" class="data"></td>
+            <td class="qs-units">km</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Fuel consumption:</td>
+            <td id="qs-consumption" class="data"></td>
+            <td class="qs-units">L/100km</td>
+          </tr>
+
+          <tr class="qs-sum">
+            <td class="qs-label" id="qs-sum">---------</td>
+            <td class="data">&nbsp;</td>
+            <td class="qs-units">&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Distance:</td>
+            <td id="qs-TotDistance" class="data"></td>
+            <td class="qs-units">km</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Gas used:</td>
+            <td id="qs-TotGasUnits" class="data"></td>
+            <td class="qs-units">L</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Fuel consumption:</td>
+            <td id="qs-TotConsumption" class="data"></td>
+            <td class="qs-units">L/100km</td>
+          </tr>
+
+          <tr>
+            <td class="qs-label">Cost per km:</td>
+            <td id="qs-TotCostPerUnit" class="data"></td>
+            <td class="qs-units">$/km</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+    </section>
+
+
+
+  </section>
+
+  <section class="settings" id="settings">
+
+    <h2>Settings</h2>
+
+    <h3>Units</h3>
+
+    <div class="metric">
+      <input type="radio" id="metric" name="gas">
+      <label for="metric">Litres and kilometers</label>
+    </div>
+
+    <div class="imperial">
+      <input type="radio" id="imperial" name="gas">
+      <label for="imperial">Miles and gallons</label>
+    </div>
+
+    <!-- <h3>Distance Units</h3>
+    <div class="km">
+      <input type="radio" id="km" name="dist">
+      <label for="km">km</label>
+    </div>
+
+    <div class="miles">
+      <input type="radio" id="gallons" name="dist">
+      <label for="gallons">miles</label>
+    </div> -->
+
+    <div id="firstTime" class="firstTime">
+      <p>Welcome to GasApp!</p>
+      <p>Choose ONE of the two options above and press the save button to start.</p>
+    </div>
+
+    <!-- <div class="total">
+      <h3>Odometer Values will be entered in:</h3>
+      <input type="radio" id="o-total" name="odometer" checked>
+      <label for="o-total">Total odometer reading</label>
+    </div>
+
+    <div class="reset">
+      <input type="radio" id="o-reset" name="odometer">
+      <label for="o-reset">Trip (reset) odometer reading</label>
+    </div> -->
+
+    <div class="row">
+      <button id="btnSettings">Save</button>
+    </div>
+
+  </section>
+
+  <section class="trip" id="trip">
+
+    <h2>Trip Accounting</h2>
+
+    <p>This page is under development...</p>
+
+    <div class="row">
+      <button id="setting">Save</button>
+    </div>
+
+  </section>
+
+  <section class="log" id="log">
+
+    <h2>Statistics Log</h2>
+
+
+    <p>This page is under development too!</p>
+
+    <p>Features coming are</p>
+
+    <ul>
+      <li>Option: last x fillups data</li>
+      <li>Consumption over last x fills</li>
+      <li>Cost /L over last x fills</li>
+      <li>Maybe a fancy graph!</li>
+    </ul>
+
+
+
+  </section>
+
+  <script src="gas.js"></script>
+
+
+</body>
+
+</html>

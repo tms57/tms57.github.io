@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+
+/* sh Allow for sticky header height of 50px;*/
+  position: relative;
+  padding-top: 70px;
+}
+
+/* *** Header *** */
+header {
+
+/* sh Allow for sticky header height of 50px;*/
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: lightgrey;
+}
+
+header h2 {
+  flex: 0 0 100%;
+  margin: 0;
+
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid green;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  list-style-type: none;
+  height: 30px;
+  border-bottom: 1px solid green;
+}
+.menu .menuItem
+/* .menu .menuTrip,
+.menu .menuLog */
+ {
+  flex: 1;
+  text-align: center;
+
+  /* border: 1px solid green; */
+}
+
+
+/* divider lines between buttons */
+a:nth-child(1),
+a:nth-child(2),
+a:nth-child(3) {
+  border-right: 1px solid green;
+}
+
+
+
+a {
+  text-decoration: none;
+  color: #333;
+  padding-top: 5px;
+}
+
+.active {
+  background-color: green;
+  color: #fff;
+}
+
+/* *** END Header *** */
+
+/* ***  fillUp *** */
+
+
+
+.fillUp,
+.settings,
+.trip,
+.log {
+  height: 100vh;   /* sh */
+  padding: 0 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuMargin {
+  padding-top: 70px;
+}
+
+.fillUp h2,
+.trip h2,
+.log h2,
+.settings h2 {
+  text-align: center;
+  margin: 10px 0 15px 0;
+}
+
+input[type=number] {
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  padding-left: 5px;
+  font-size: 16px;
+  /* Zoom issue */
+}
+
+input[type=number]:focus,
+button:focus {
+  border: 1px solid #1fa51f;
+  border-radius: 3px;
+  outline: none;
+}
+
+/* Form Grid */
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.row label {
+
+  width: 45%;
+}
+.row .textBox {
+
+  width: 55%;
+}
+/* .twoInput {
+  display: block;
+}
+
+.textBox.shortBox {
+  display: inline-block;
+  width: 50px;
+}
+.unitOptions {
+    display: inline-block;
+    margin-left: 10px;
+    width: 80px;
+    font-size: 12px;
+} */
+/* Form Grid */
+
+
+button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background: #1fa51f;
+  color: white;
+}
+
+/* ***  END fillUp *** */
+
+/* ***  settings *** */
+.settings h3 {
+  margin: 0 0 10px 0;
+}
+
+.settings .metric,
+.settings .imperial {
+  margin-bottom: 10px;
+}
+
+.firstTime {
+  display: none;
+  background-color: orange;
+  border-radius: 4px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+}
+
+.show {
+  display: block;
+}
+
+
+/* ***  END settings *** */
+
+table {
+  margin-top: 10px;
+  width: 100%;
+  overflow-wrap: break-word;
+  padding: 0 1em;
+
+}
+
+tr {
+  height: 1rem;
+}
+
+table tbody tr td.td-cust {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#indo tr td .qs-label {
+  width: 60%;
+}
+
+.data {
+  text-align: right;
+  width: 25%;
+}
+
+.qs-units {
+  width: 15%;
+  padding-left: .1rem;
+  color: red;
+}
+
+.qs-sum {
+  height: 3rem;
+}
