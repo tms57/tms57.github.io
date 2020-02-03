@@ -36,6 +36,22 @@ window.onload = function () {
     }
 
     window.location.href = '#fillUp';
+    // show fillups history (before submit pressed)
+    const qsFillAmount = gasData.purchase[gasData.purchase.length - 1].amount;
+    const qsPrice = gasData.purchase[gasData.purchase.length - 1].gasPrice;
+    const qsOdometer = gasData.purchase[gasData.purchase.length - 1].odometer;
+    const qsGasUnits = gasData.purchase[gasData.purchase.length - 1].gasUnits;
+
+    const qsAvgConsumption = qsGasUnits / qsOdometer * 100;
+
+    // 2. show last fill data length - 1 item
+    document.getElementById('qs-fillAmount').textContent = qsFillAmount.toFixed(2);
+    document.getElementById('qs-price').textContent = qsPrice.toFixed(3);
+    document.getElementById('qs-odometer').textContent = qsOdometer.toFixed(1);
+    document.getElementById('qs-consumption').textContent = qsAvgConsumption.toFixed(1);
+
+    // 3. show accumulated last 4 fills data
+    displayLastFourFills();
   }
 }
 
@@ -208,23 +224,8 @@ addTransaction.addEventListener('click', () => {
   localStorage.setItem('gasAppTMS', JSON.stringify(gasData));
 
   // write cumulative last 4 fill table data
-  const recentFillsData = getRecentData(gasData);
+  displayLastFourFills();
 
-  document.getElementById('qs-sum').textContent = `Last ${recentFillsData.number} fills`;
-  console.log(recentFillsData);
-
-  document.getElementById('qs-TotDistance').textContent = recentFillsData.totalDistance.toFixed(1);
-
-  document.getElementById('qs-TotGasUnits').textContent = recentFillsData.totalGasUnits.toFixed(1);
-
-  document.getElementById('qs-TotConsumption').textContent = (recentFillsData.totalGasUnits / recentFillsData.totalDistance * 100).toFixed(1);
-
-  document.getElementById('qs-TotCostPerUnit').textContent = (recentFillsData.totalDollars / recentFillsData.totalDistance).toFixed(2);
-
-
-
-  // console.log(JSON.stringify(transactions));
-  //localStorage.setItem('fillUps', JSON.stringify(transactions));
 
 });
 
@@ -257,12 +258,21 @@ function getRecentData(gasData) {
   return recentFills;
 }
 
-//const nw = new Date();
+function displayLastFourFills() {
 
-//console.log(nw.toDateString());
+  const recentFillsData = getRecentData(gasData);
 
+  document.getElementById('qs-sum').textContent = `Last ${recentFillsData.number} fills`;
+  console.log(recentFillsData);
 
+  document.getElementById('qs-TotDistance').textContent = recentFillsData.totalDistance.toFixed(1);
 
+  document.getElementById('qs-TotGasUnits').textContent = recentFillsData.totalGasUnits.toFixed(1);
+
+  document.getElementById('qs-TotConsumption').textContent = (recentFillsData.totalGasUnits / recentFillsData.totalDistance * 100).toFixed(1);
+
+  document.getElementById('qs-TotCostPerUnit').textContent = (recentFillsData.totalDollars / recentFillsData.totalDistance).toFixed(2);
+}
 
 
 
