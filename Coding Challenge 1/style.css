@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(247, 237, 237);
+  padding: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.stepper-form {
+  padding: 2rem;
+  background-color: #fff;
+  min-width: 500px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.stepper-progress {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 0.5rem 0 1rem 1rem;
+}
+
+.user,
+.email,
+.password,
+.validate {
+  display: flex;
+  margin-right: 2rem;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.75rem;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #8d8888;
+  margin-right: 0.3rem;
+}
+
+.active {
+  background-color: cornflowerblue;
+}
+
+.stepper-input {
+  padding: 0 1rem;
+}
+
+/* form {
+  margin-bottom: 1rem;
+} */
+
+form label,
+form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+#email-form,
+#password-form,
+#validation {
+  display: none;
+}
+
+.form p {
+  /* display: none; */
+  margin: 0 0 4px 0;
+}
+
+.stepper-controls {
+  padding: 0 1rem;
+}
+
+button {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #fff;
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+#previousBtn,
+#submitBtn {
+  display: none;
+}

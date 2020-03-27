@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stepper Form Challenge</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="stepper-form">
+      <h2>Linear Stepper</h2>
+
+      <div class="stepper-progress">
+        <div class="user">
+          <div class="number active" id="step0"><span>1</span></div>
+          <div class="label">Username</div>
+        </div>
+
+        <div class="email">
+          <div class="number" id="step1"><span>2</span></div>
+          <div class="label">Email</div>
+        </div>
+
+        <div class="password">
+          <div class="number" id="step2"><span>3</span></div>
+          <div class="label">Password</div>
+        </div>
+
+        <div class="validate">
+          <div class="number" id="step3"><span>4</span></div>
+          <div class="label">Validate</div>
+        </div>
+      </div>
+
+      <div class="stepper-input">
+        <form class="form" id="user-form">
+          <label for="user">Username</label>
+          <input type="text" name="username" id="username" />
+        </form>
+
+        <form class="form" id="email-form">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </form>
+
+        <form class="form" id="password-form">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </form>
+
+        <form class="form" id="validation">
+          <p id="message"></p>
+          <!-- <br />
+          <p>Username: <span id="v-username"></span></p>
+          <p>Email: <span id="v-email"></span></p>
+          <p>Password: <span id="v-password"></span></p> -->
+        </form>
+      </div>
+
+      <div class="stepper-controls">
+        <button id="previousBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+        <button id="submitBtn">Submit</button>
+      </div>
+    </div>
+
+    <script src="stepper.js"></script>
+  </body>
+</html>
