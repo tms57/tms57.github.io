@@ -51,7 +51,7 @@
     </style>
   </head>
   <body>
-    <h1 class="">Shot Distance</h1>
+    <h1 class="">Ted's Tracker</h1>
 
     <button id="track">MARK</button>
 
@@ -65,9 +65,9 @@
         <input type="radio" id="meters" name="units" />
         <label for="meters">Meters</label>
       </div>
-
-      <p id="testing"></p>
     </form>
+
+    <p id="testing">testing</p>
 
     <script>
       var tracking = false;
@@ -83,8 +83,8 @@
       var options = {
         // geoloaction options
         enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 20000,
+        timeout: 30000,
+        maximumAge: 27000,
       };
 
       function success(pos) {
@@ -165,7 +165,7 @@
         }
 
         document.getElementById('distance').innerHTML =
-          distance.toFixed(0) + units;
+          distance.toFixed(1) + units;
       }
 
       //   function getDistanceInMeters(x1, y1, x2, y2) {    // Heavysine method
@@ -200,9 +200,9 @@
         return d * 1000; // meters
       }
 
-      function deg2rad(deg) {
-        return deg * (Math.PI / 180);
-      }
+      // function deg2rad(deg) {
+      //   return deg * (Math.PI / 180);
+      // }
     </script>
   </body>
 </html>
