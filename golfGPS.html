@@ -164,7 +164,8 @@
           distance = distance * 1.09361;
         }
 
-        document.getElementById('distance').innerHTML = distance + units;
+        document.getElementById('distance').innerHTML =
+          distance.toFixed(0) + units;
       }
 
       //   function getDistanceInMeters(x1, y1, x2, y2) {    // Heavysine method
