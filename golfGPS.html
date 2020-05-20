@@ -11,6 +11,8 @@
       body,
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
       body {
@@ -51,7 +53,7 @@
     </style>
   </head>
   <body>
-    <h1 class="">Ted's Tracker</h1>
+    <h1>Ted's Tracker</h1>
 
     <button id="track">MARK</button>
 
@@ -102,7 +104,15 @@
           y2 = crd.longitude;
 
           // testing
-          msg = 'Lat: ' + x2 + '\n' + 'Long: ' + y2;
+          msg =
+            'Lat: ' +
+            x2 +
+            '\n' +
+            'Long: ' +
+            y2 +
+            '\n' +
+            'Accuracy: ' +
+            crd.accuracy;
           document.getElementById('testing').innerHTML = msg;
 
           // testing
@@ -124,7 +134,9 @@
           tracking = !tracking; //toggle
 
           if (tracking) {
-            getLocation(); // get initial coords
+            // get initial coords
+            navigator.geolocation.getCurrentPosition(success, error, options);
+
             myTimer = setInterval(calculateDistance, 250);
             track.style.backgroundColor = 'orange';
           } else {
@@ -145,10 +157,6 @@
         false
       );
 
-      function getLocation() {
-        navigator.geolocation.getCurrentPosition(success, error, options);
-      }
-
       function calculateDistance() {
         var distance = 0;
 
@@ -156,7 +164,7 @@
           document.getElementById('distance').innerHTML = 0;
         }
 
-        getLocation();
+        navigator.geolocation.getCurrentPosition(success, error, options);
 
         distance = getDistanceInMeters(x1, y1, x2, y2);
 
