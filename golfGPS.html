@@ -18,7 +18,7 @@
       body {
         padding: 10px 5% 0 5%;
         max-width: 500px;
-        margin: 0 auto; /* center */
+        margin: 0 auto;
       }
       h1 {
         text-align: center;
@@ -33,6 +33,7 @@
       button {
         width: 100%;
         height: 40px;
+        margin-bottom: 1em;
         border: none;
         border-radius: 5px;
         background: #1fa51f;
@@ -48,7 +49,7 @@
 
       #test {
         margin: 20px 0 20px 0;
-        background: yellow;
+        border: 1px solid green;
       }
     </style>
   </head>
@@ -56,6 +57,7 @@
     <h1>Ted's Tracker</h1>
 
     <button id="track">MARK</button>
+    <button id="stop">STOP</button>
 
     <h2>Distance: <span id="distance"></span></h2>
 
@@ -69,50 +71,83 @@
       </div>
     </form>
 
-    <p id="testing">testing</p>
+    <!-- <p id="testing">testing</p> -->
+    <p name="test" id="test" cols="45" rows="20"></p>
 
     <script>
-      var tracking = false;
-      var display = document.getElementById('distance');
-      var myTimer = null;
+      let tracking = false;
+      let display = document.getElementById('distance');
+      let myTimer = null;
+      let msg = '';
 
-      var x1 = null,
+      let x1 = null,
         y1 = null; // initial coords
-      var x2 = null,
+      let x2 = null,
         y2 = null; // current coords
-      var units = 'yards';
+      let units = 'yards';
 
-      var options = {
+      let options = {
         // geoloaction options
         enableHighAccuracy: true,
         timeout: 30000,
         maximumAge: 27000,
       };
 
-      function success(pos) {
-        var crd = pos.coords;
-        var msg = ''; // testing
+      function initial(pos) {
+        let crd = pos.coords;
 
-        if (x1 === null && y1 === null) {
-          x1 = crd.latitude;
-          y1 = crd.longitude;
-          console.log('Initail x1: ' + x1);
-          console.log('Initail y1: ' + y1);
-          console.log('Accuracy: ', crd.accuracy);
-        } else {
+        x1 = crd.latitude;
+        y1 = crd.longitude;
+
+        msg = `X0: ${x1}
+        Y0: ${y1}
+        Accuracy: ${crd.accuracy}<br>`;
+
+        document.getElementById('test').innerHTML = msg;
+      }
+
+      function walking(pos) {
+        let crd = pos.coords;
+
+        x2 = crd.latitude;
+        y2 = crd.longitude;
+
+        msg += `X: ${x2}
+                Y: ${y2}
+                Accuracy: ${crd.accuracy}<br>`;
+
+        document.getElementById('test').innerHTML = msg;
+      }
+
+      function final(pos) {
+        let crd = pos.coords;
+
+        x2 = crd.latitude;
+        y2 = crd.longitude;
+
+        msg += `Xf: ${x2}
+                Yf: ${y2}
+                Accuracy: ${crd.accuracy}`;
+      }
+
+      // ***
+      /*
+        // if (x1 === null && y1 === null) {
+
+
+          const watcher = navigator.geolocation.watchPosition(displayLocationInfo);
+
+          setTimeout(() => {
+            navigator.geolocation.clearWatch(watcher);
+          }, 2000);
+
+        } else {  // walking now...
+
           x2 = crd.latitude;
           y2 = crd.longitude;
 
           // testing
-          msg =
-            'Lat: ' +
-            x2 +
-            '\n' +
-            'Long: ' +
-            y2 +
-            '\n' +
-            'Accuracy: ' +
-            crd.accuracy;
+
           document.getElementById('testing').innerHTML = msg;
 
           // testing
@@ -120,6 +155,7 @@
           // console.log('Initail y2: ' + y2);
         }
       }
+*/
 
       function error(err) {
         // Geolocation error
@@ -127,38 +163,36 @@
       }
 
       // button click to start tracking distance
-      var track = document.getElementById('track');
+      let track = document.getElementById('track');
       track.addEventListener(
         'click',
         function () {
-          tracking = !tracking; //toggle
+          navigator.geolocation.getCurrentPosition(initial, error, options);
 
-          if (tracking) {
-            // get initial coords
-            navigator.geolocation.getCurrentPosition(success, error, options);
+          const watcher = navigator.geolocation.watchPosition(walking);
 
-            myTimer = setInterval(calculateDistance, 250);
-            track.style.backgroundColor = 'orange';
-          } else {
-            clearInterval(myTimer);
-            x1 = y1 = null;
+          // setTimeout(() => {
+          //   navigator.geolocation.clearWatch(watcher);
+          // }, 5000);
 
-            track.style.backgroundColor = 'green';
-            n = 0;
-            display.innerHTML = 0;
-          }
+          navigator.geolocation.getCurrentPosition(final, error, options);
 
-          if (document.getElementById('yards').checked) {
-            units = ' Yards';
-          } else {
-            units = ' Meters';
-          }
+          // document.getElementById('test').value = msg;
+        },
+        false
+      );
+
+      let stop = document.getElementById('stop');
+      stop.addEventListener(
+        'click',
+        function (watcher) {
+          navigator.geolocation.clearWatch(watcher);
         },
         false
       );
 
       function calculateDistance() {
-        var distance = 0;
+        let distance = 0;
 
         if (x2 === null && y2 === null) {
           document.getElementById('distance').innerHTML = 0;
@@ -177,40 +211,72 @@
       }
 
       //   function getDistanceInMeters(x1, y1, x2, y2) {    // Heavysine method
-      //   var R = 6378137; // Radius of the earth in meters
+      //   let R = 6378137; // Radius of the earth in meters
 
-      //   var dLat = deg2rad(x2 - x1);  // deg2rad below
-      //   var dLon = deg2rad(y2 - y1);
+      //   let dLat = deg2rad(x2 - x1);  // deg2rad below
+      //   let dLon = deg2rad(y2 - y1);
 
-      //   var a =
+      //   let a =
       //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       //     Math.cos(deg2rad(x1)) * Math.cos(deg2rad(x2)) *
       //     Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
-      //   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      //   var d = R * c; // Distance in m
+      //   let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      //   let d = R * c; // Distance in m
       //   return d;
       // }
 
       function getDistanceInMeters(lat1, lon1, lat2, lon2) {
         // generally used geo measurement function
-        var R = 6378.137; // Radius of earth in KM
-        var dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
-        var dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
-        var a =
+        let R = 6378.137; // Radius of earth in KM
+        let dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
+        let dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
+        let a =
           Math.sin(dLat / 2) * Math.sin(dLat / 2) +
           Math.cos((lat1 * Math.PI) / 180) *
             Math.cos((lat2 * Math.PI) / 180) *
             Math.sin(dLon / 2) *
             Math.sin(dLon / 2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c;
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        let d = R * c;
         return d * 1000; // meters
       }
 
       // function deg2rad(deg) {
       //   return deg * (Math.PI / 180);
       // }
+
+      // setTimeout(() => {
+      //   navigator.geolocation.clearWatch(watcher);
+      // }, 15000);
+
+      /*
+          // tracking = !tracking; //toggle
+
+          // if (tracking) {
+            // get initial coords
+
+            // myTimer = setInterval(calculateDistance, 10000);
+
+            // track.style.backgroundColor = 'orange';
+          } else {
+            clearInterval(myTimer);
+            x1 = y1 = null;
+
+            track.style.backgroundColor = 'green';
+            n = 0;
+            display.innerHTML = 0;
+
+            // final position
+
+          }
+
+          if (document.getElementById('yards').checked) {
+            units = ' Yards';
+          } else {
+            units = ' Meters';
+          }
+*/
     </script>
   </body>
 </html>
