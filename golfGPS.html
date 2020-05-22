@@ -116,7 +116,7 @@
                 Y: ${y2}
                 Accuracy: ${crd.accuracy}<br>`;
 
-        document.getElementById('test').innerHTML = msg;
+        // document.getElementById('test').innerHTML = msg;
       }
 
       function final(pos) {
@@ -128,6 +128,8 @@
         msg += `Xf: ${x2}
                 Yf: ${y2}
                 Accuracy: ${crd.accuracy}`;
+
+        document.getElementById('test').innerHTML = msg;
       }
 
       // ***
@@ -171,9 +173,9 @@
 
           const watcher = navigator.geolocation.watchPosition(walking);
 
-          // setTimeout(() => {
-          //   navigator.geolocation.clearWatch(watcher);
-          // }, 5000);
+          setTimeout(() => {
+            navigator.geolocation.clearWatch(watcher);
+          }, 5000);
 
           navigator.geolocation.getCurrentPosition(final, error, options);
 
@@ -182,14 +184,14 @@
         false
       );
 
-      let stop = document.getElementById('stop');
-      stop.addEventListener(
-        'click',
-        function (watcher) {
-          navigator.geolocation.clearWatch(watcher);
-        },
-        false
-      );
+      // let stop = document.getElementById('stop');
+      // stop.addEventListener(
+      //   'click',
+      //   function (watcher) {
+      //     navigator.geolocation.clearWatch(watcher);
+      //   },
+      //   false
+      // );
 
       function calculateDistance() {
         let distance = 0;
@@ -198,7 +200,7 @@
           document.getElementById('distance').innerHTML = 0;
         }
 
-        navigator.geolocation.getCurrentPosition(success, error, options);
+        // navigator.geolocation.getCurrentPosition(success, error, options);
 
         distance = getDistanceInMeters(x1, y1, x2, y2);
 
