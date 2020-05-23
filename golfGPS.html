@@ -64,18 +64,22 @@
       <label for="meters">Meters</label>
     </div>
 
+    <p id="log"></p>
+
     <script>
       let tracking = false;
       let gotInitialCoords = false;
       let watchID;
       let display = document.getElementById('distance');
       let units,
-        msg = '';
+        acc = [];
 
       let x1 = (y1 = null); // initial coords
       let x2 = (y2 = null); // walking coords
 
-      // let units = 'yards';
+      // *** testing accuracy
+      let log = document.getElementById('log');
+      // ***
 
       // geoloaction options
       let options = {
@@ -101,6 +105,10 @@
         x2 = position.coords.latitude;
         y2 = position.coords.longitude;
 
+        // *** testing accuracy
+        acc.push(position.coords.accuracy);
+        // ***
+
         calculateDistance();
       }
 
@@ -110,19 +118,29 @@
         'click',
         function () {
           tracking = !tracking; //toggle
-          watchID = navigator.geolocation.watchPosition(
-            walking,
-            error,
-            options
-          );
           if (tracking) {
             track.style.backgroundColor = 'orange';
-            // walking(position);
+            watchID = navigator.geolocation.watchPosition(
+              walking,
+              error,
+              options
+            );
           } else {
+            // stop tracking
             gotInitialCoords = false;
             x1 = y1 = null;
             track.style.backgroundColor = 'green';
             navigator.geolocation.clearWatch(watchID);
+            // *** acc testing
+            let sum = 0;
+            for (let i = 0; i < acc.length; i++) {
+              sum += acc[i];
+            }
+            log.innerHTML = `Total readings: ${acc.length}<br>Acc Mean: ${
+              sum / acc.length
+            }`;
+            // ***
+
             console.log(`Watch #${watchID} was cancelled!`);
           }
 
