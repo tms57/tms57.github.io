@@ -69,12 +69,13 @@
       let gotInitialCoords = false;
       let watchID;
       let display = document.getElementById('distance');
-      let msg = '';
+      let units,
+        msg = '';
 
       let x1 = (y1 = null); // initial coords
       let x2 = (y2 = null); // walking coords
 
-      let units = 'yards';
+      // let units = 'yards';
 
       // geoloaction options
       let options = {
@@ -92,13 +93,13 @@
         // mark is on...
         if (!gotInitialCoords) {
           x1 = position.coords.latitude;
-          y1 = position.coords.logitude;
+          y1 = position.coords.longitude;
           gotInitialCoords = true;
           display.innerText = 0;
         }
 
         x2 = position.coords.latitude;
-        y2 = position.coords.logitude;
+        y2 = position.coords.longitude;
 
         calculateDistance();
       }
@@ -109,11 +110,14 @@
         'click',
         function () {
           tracking = !tracking; //toggle
-
+          watchID = navigator.geolocation.watchPosition(
+            walking,
+            error,
+            options
+          );
           if (tracking) {
             track.style.backgroundColor = 'orange';
-            watchID = navigator.geolocation.watchPosition(walking);
-            console.log(watchID);
+            // walking(position);
           } else {
             gotInitialCoords = false;
             x1 = y1 = null;
@@ -140,7 +144,7 @@
           distance = distance * 1.09361;
         }
 
-        display.innerHTML = distance.toFixed(1) + units;
+        display.innerHTML = `${distance.toFixed(0)} ${units}`;
       }
 
       function getDistanceInMeters(lat1, lon1, lat2, lon2) {
