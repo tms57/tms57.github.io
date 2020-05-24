@@ -64,6 +64,8 @@
       <label for="meters">Meters</label>
     </div>
 
+    <h2 id="lastShot"></h2>
+
     <p id="log"></p>
 
     <script>
@@ -120,6 +122,7 @@
           tracking = !tracking; //toggle
           if (tracking) {
             track.style.backgroundColor = 'orange';
+            document.getElementById('lastShot').innerText = '';
             watchID = navigator.geolocation.watchPosition(
               walking,
               error,
@@ -127,10 +130,14 @@
             );
           } else {
             // stop tracking
+            navigator.geolocation.clearWatch(watchID);
             gotInitialCoords = false;
             x1 = y1 = null;
             track.style.backgroundColor = 'green';
-            navigator.geolocation.clearWatch(watchID);
+            // Leave most recent distance showing
+            document.getElementById(
+              'lastShot'
+            ).innerText = `Last shot: ${display.innerText}`;
             // *** acc testing
             let sum = 0;
             for (let i = 0; i < acc.length; i++) {
