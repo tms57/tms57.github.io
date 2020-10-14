@@ -1,38 +1,72 @@
 html,
 body {
-  margin: 20px;
   padding: 0;
   font-family: Karla;
-}
-
-#box {
-  padding: 10px;
-  display: block;
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
   background: #ecf2ff;
-  font-size: 30px;
 }
 
-#emoji-container {
-  font-size: 50px;
+#main-container {
+  /*
+      Vertically Stack
+      & Horizontally Center contents
+  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#box:focus {
-  background: #cfdfff;
-}
-
-#help-text {
-  display: none;
+#equation-field {
   text-align: center;
+  font-size: 2rem;
+  background-color: wheat;
+  outline: none;
+  margin: 0.5rem;
+  border-radius: 0.3rem;
+  width: 30rem;
 }
 
-#box:focus #help-text {
-  display: block;
+#solve-button {
+  border: none;
+  background-color: #4caf50;
+  font-size: 2rem;
+  color: white;
+  padding: 0.3rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.5rem;
+  width: 10rem;
+  outline: none;
 }
 
-/* added styles */
-#rating {
-  font-size: 20px;
+#solution-display {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ecf2ff;
+}
+
+#solution-display > .equation-component {
+  display: flex;
+  justify-content: space-around;
+  /* background-color: #008cba; */
+  /* background-color: #fff; */
+  color: white;
+  font-size: 2rem;
+  padding: 0.1rem 1rem;
+}
+
+.equation-component div {
+  background-color: #008cba;
+  padding: 0.1rem 1rem;
+  margin: 0 0.25rem;
+}
+
+.equation-component .operator {
+  background-color: orange;
+  color: #fff;
+}
+
+.equation-component .equals {
+  background-color: #b599b5;
+  color: #fff;
 }

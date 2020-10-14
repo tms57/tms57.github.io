@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emoji Ratings</title>
+    <title>String Calculator</title>
     <link rel="stylesheet" href="index.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Karla&display=swap"
@@ -11,15 +11,19 @@
     />
   </head>
   <body>
-    <h1 style="text-align: center">Scrimba Weekly Dev Challenge</h1>
-    <h3 style="text-align: center">Emoji Ratings</h3>
+    <div id="main-container">
+      <input id="equation-field" placeholder="3 + 3" />
+      <button id="solve-button">Solve</button>
+      <h3 id="solution-display"></h3>
 
-    <div id="box" tabindex="0">
-      <p id="text">Click here to give your rating!</p>
-      <p id="rating"></p>
+      <br />
+      <h4>Instructions:</h4>
+      <p>
+        Enter an equation with or without spaces. (80 / 2 * 5 + 25 / 5 or
+        80/2*5+25/5)
+      </p>
     </div>
 
-    <p>*** I also trapped keyup events for numeric keypads (keyCodes 97-101)</p>
     <script src="index.js"></script>
   </body>
 </html>
