@@ -1,72 +1,122 @@
-html,
-body {
-  padding: 0;
-  font-family: Karla;
-  background: #ecf2ff;
+/*
+
+PART 1:
+
+You've been ordered to improve your company's newsletter form.
+You can design it however you want, but the manager wants the button to
+animate both on the :hover and the :active state.
+
+1. Redesign the page (e.g. colors, positions, sizing, spacing)
+2. Improve the button's hover effect
+3. Improve the button's click effect
+
+SKILLS:
+color, background, margin, padding, border-radius,
+CSS pseudo selectors (:active, :hover), transform
+*/
+
+/* color variables */
+/* https://www.color-hex.com/color-palette/99315 */
+:root {
+  --darker: #8664b3;
+  --lighter: #cdb5ee;
+  --lighter2: #e2d0fc;
+  --background: rbg(200, 200, 200);
+  --background: #fefefe;
+  --formColor: #4e455a;
+}
+* {
+  box-sizing: border-box;
 }
 
-#main-container {
-  /*
-      Vertically Stack
-      & Horizontally Center contents
-  */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vw;
+  background-color: #fff;
+}
+
+.wrapper {
+  border: 1px solid var(--darker);
+  margin: 0;
+  width: 80%;
+  height: 60%;
+
+  display: flex;
+  background-color: var(--background);
+}
+
+.wrapper .sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 1 0 40%;
+  background: var(--darker);
+  padding: 2rem;
+
+  color: var(--background);
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+.wrapper form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
+
+  flex: 1 0 60%;
+  padding-left: 1rem;
+
+  color: var(--formColor);
 }
 
-#equation-field {
-  text-align: center;
-  font-size: 2rem;
-  background-color: wheat;
+.wrapper form label {
+  margin-bottom: 1rem;
+  color: var(--formColor);
+}
+.wrapper form input {
   outline: none;
-  margin: 0.5rem;
-  border-radius: 0.3rem;
-  width: 30rem;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  border-bottom: 1px solid rgb(58, 12, 13);
+  color: var(--formColor);
+  background-color: var(--background);
+  width: 90%;
 }
 
-#solve-button {
+.wrapper form button {
+  display: block;
+  border-radius: 20px;
+  color: black;
+  margin-top: 1rem;
+  padding: 0.3rem;
   border: none;
-  background-color: #4caf50;
-  font-size: 2rem;
-  color: white;
-  padding: 0.3rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0.5rem;
-  width: 10rem;
   outline: none;
+  background-color: var(--lighter);
+  font-size: 15px;
+  width: 60%;
 }
 
-#solution-display {
-  display: flex;
-  justify-content: space-around;
-  background-color: #ecf2ff;
+.wrapper form button:hover {
+  /* font-size: 20px; */
+  color: var(--background);
+  font-style: bold;
+  background-color: var(--darker);
 }
 
-#solution-display > .equation-component {
-  display: flex;
-  justify-content: space-around;
-  /* background-color: #008cba; */
-  /* background-color: #fff; */
-  color: white;
-  font-size: 2rem;
-  padding: 0.1rem 1rem;
-}
-
-.equation-component div {
-  background-color: #008cba;
-  padding: 0.1rem 1rem;
-  margin: 0 0.25rem;
-}
-
-.equation-component .operator {
-  background-color: orange;
-  color: #fff;
-}
-
-.equation-component .equals {
-  background-color: #b599b5;
-  color: #fff;
+.wrapper form button:focus {
+  color: var(--background);
+  font-style: bold;
+  background-color: var(--darker);
+  border: none;
+  outline: none;
+  width: 90%;
+  transition: width 2s;
 }
