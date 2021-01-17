@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Exchange</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <img src="./money.svg" alt="money image" class="money-img" />
+
+      <h1>Scrimba Exchange Centre</h1>
+
+      <p>Choose the amount and currencies to get your exchange rate</p>
+
+      <div class="container">
+        <div class="currency">
+          <select id="from-currency">
+            <option value="AED">AED</option>
+            <option value="ARS">ARS</option>
+            <option value="AUD">AUD</option>
+            <option value="BGN">BGN</option>
+            <option value="BRL">BRL</option>
+            <option value="BSD">BSD</option>
+            <option value="CAD" selected>CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CLP">CLP</option>
+            <option value="CNY">CNY</option>
+            <option value="COP">COP</option>
+            <option value="CZK">CZK</option>
+            <option value="DKK">DKK</option>
+            <option value="DOP">DOP</option>
+            <option value="EGP">EGP</option>
+            <option value="EUR">EUR</option>
+            <option value="FJD">FJD</option>
+            <option value="GBP">GBP</option>
+            <option value="GTQ">GTQ</option>
+            <option value="HKD">HKD</option>
+            <option value="HRK">HRK</option>
+            <option value="HUF">HUF</option>
+            <option value="IDR">IDR</option>
+            <option value="ILS">ILS</option>
+            <option value="INR">INR</option>
+            <option value="ISK">ISK</option>
+            <option value="JPY">JPY</option>
+            <option value="KRW">KRW</option>
+            <option value="KZT">KZT</option>
+            <option value="MXN">MXN</option>
+            <option value="MYR">MYR</option>
+            <option value="NOK">NOK</option>
+            <option value="NZD">NZD</option>
+            <option value="PAB">PAB</option>
+            <option value="PEN">PEN</option>
+            <option value="PHP">PHP</option>
+            <option value="PKR">PKR</option>
+            <option value="PLN">PLN</option>
+            <option value="PYG">PYG</option>
+            <option value="RON">RON</option>
+            <option value="RUB">RUB</option>
+            <option value="SAR">SAR</option>
+            <option value="SEK">SEK</option>
+            <option value="SGD">SGD</option>
+            <option value="THB">THB</option>
+            <option value="TRY">TRY</option>
+            <option value="TWD">TWD</option>
+            <option value="UAH">UAH</option>
+            <option value="USD">USD</option>
+            <option value="UYU">UYU</option>
+            <option value="VND">VND</option>
+            <option value="ZAR">ZAR</option>
+          </select>
+          <div class="amount">
+            <label for="from-amount">Amount: </label>
+            <input type="number" id="from-amount" placeholder="0" value="1" />
+          </div>
+        </div>
+
+        <div class="swap-rate-container">
+          <div class="rate" id="rate"></div>
+        </div>
+
+        <div class="currency">
+          <select id="toCurrency">
+            <option value="AED">AED</option>
+            <option value="ARS">ARS</option>
+            <option value="AUD">AUD</option>
+            <option value="BGN">BGN</option>
+            <option value="BRL">BRL</option>
+            <option value="BSD">BSD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CLP">CLP</option>
+            <option value="CNY">CNY</option>
+            <option value="COP">COP</option>
+            <option value="CZK">CZK</option>
+            <option value="DKK">DKK</option>
+            <option value="DOP">DOP</option>
+            <option value="EGP">EGP</option>
+            <option value="EUR" selected>EUR</option>
+            <option value="FJD">FJD</option>
+            <option value="GBP">GBP</option>
+            <option value="GTQ">GTQ</option>
+            <option value="HKD">HKD</option>
+            <option value="HRK">HRK</option>
+            <option value="HUF">HUF</option>
+            <option value="IDR">IDR</option>
+            <option value="ILS">ILS</option>
+            <option value="INR">INR</option>
+            <option value="ISK">ISK</option>
+            <option value="JPY">JPY</option>
+            <option value="KRW">KRW</option>
+            <option value="KZT">KZT</option>
+            <option value="MXN">MXN</option>
+            <option value="MYR">MYR</option>
+            <option value="NOK">NOK</option>
+            <option value="NZD">NZD</option>
+            <option value="PAB">PAB</option>
+            <option value="PEN">PEN</option>
+            <option value="PHP">PHP</option>
+            <option value="PKR">PKR</option>
+            <option value="PLN">PLN</option>
+            <option value="PYG">PYG</option>
+            <option value="RON">RON</option>
+            <option value="RUB">RUB</option>
+            <option value="SAR">SAR</option>
+            <option value="SEK">SEK</option>
+            <option value="SGD">SGD</option>
+            <option value="THB">THB</option>
+            <option value="TRY">TRY</option>
+            <option value="TWD">TWD</option>
+            <option value="UAH">UAH</option>
+            <option value="USD">USD</option>
+            <option value="UYU">UYU</option>
+            <option value="VND">VND</option>
+            <option value="ZAR">ZAR</option>
+          </select>
+          <input type="number" id="to-amount" placeholder="0" />
+        </div>
+      </div>
+
+      <p class="attrib">
+        * SVG image by Ssolbergj - Own work, CC BY-SA 4.0,
+        <a
+          href="https://commons.wikimedia.org/w/index.php?curid=3115388"
+          target="_blank"
+          >https://commons.wikimedia.org/w/index.php?curid=3115388</a
+        >
+      </p>
+    </div>
+    <!-- end app -->
+
+    <div class="notes">
+      <h1>Scrimba Weekly Challenge</h1>
+      <h3>Jan 13, 2021</h3>
+
+      <h4>Stretch Goals</h4>
+
+      <p>
+        Since I've been learning and experimenting with APIs recently I decided
+        to give it a shot this week.
+      </p>
+
+      <p>
+        I'm wondering if APIs and cloud database options like Google Firebase
+        will replace conventional hosting one day. It's hard to figure out
+        exactly what the cost would be though, with conventional hosting costs
+        are fixed each month and you know what they are!
+      </p>
+
+      <p>
+        It seems that many API vendors are free up to a certain number of
+        requests but then get costly after that. Same with cloud databases, I
+        wouldn't want to get a $1500 bill one month because someone decided to
+        make a game out of making repeated database requests!
+      </p>
+
+      <p>
+        The API I found was at
+        <a href="https://exchangeratesapi.io/" target="_blank"
+          >https://exchangeratesapi.io</a
+        >. It was easier to use than pretty much any other api I've tried. Some
+        have better docs that others!
+      </p>
+
+      <p>
+        Since getting data from an external API takes some time this also meant
+        coming to grips with <strong>promises</strong> which is really not my
+        forte, at least not yet.
+      </p>
+
+      <p>
+        It seems to work but the API doesn't return rate for some currencies
+        (try converting to FJD which is Fijian currency) which results in a 0
+        amout, at least it did for me when testing it.
+      </p>
+
+      <hr />
+
+      <p class="footnote">
+        I'm thinking that the shipping cost to send a swag prize to Canada (in
+        the unlikely event that I actually won) would be much more that the item
+        itself! 🤣
+      </p>
+    </div>
+
+    <script src="exchange.js"></script>
+  </body>
+</html>
