@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Metric Conversions</title>
+
+    <!-- <link rel="icon" href="../img/tcubed-orange.ico" type="image/x-icon" /> -->
+    <link rel="stylesheet" href="./LessonCSS/reset.css" />
+    <link rel="stylesheet" href="./LessonCSS//metricPrefix.css" />
+  </head>
+
+  <body>
+    <div class="coursePageHeader">
+      <h2>Metric Converstions</h2>
+    </div>
+
+    <div class="courseSubHead">
+      <!-- <h3>Metric Prefixes</h3> -->
+      <p>
+        The metric prefixes are symbols that represent powers of 10 as follows:
+      </p>
+      <div>
+        <section>
+          <div class="prefix">f, femto (10<sup>-15</sup>)</div>
+          <div class="prefix">p, pico (10<sup>-12</sup>)</div>
+          <div class="prefix">n, nano (10<sup>-9</sup>)</div>
+          <div class="prefix">u, micro (10<sup>-6</sup>)</div>
+          <div class="prefix">m, milli (10<sup>-3</sup>)</div>
+        </section>
+        <section>
+          <div class="prefix">c, centi (10<sup>-2</sup>)</div>
+          <div class="prefix">d, deci (10<sup>-1</sup>)</div>
+          <div class="prefix">(base), (10<sup>0</sup>)</div>
+          <div class="prefix">da, deca (10<sup>1</sup>)</div>
+          <div class="prefix">h, hecto (10<sup>2</sup>)</div>
+        </section>
+
+        <section>
+          <div class="prefix">k, kilo (10<sup>3</sup>)</div>
+          <div class="prefix">M, mega (10<sup>6</sup>)</div>
+          <div class="prefix">G, giga (10<sup>9</sup>)</div>
+          <div class="prefix">T, tera (10<sup>12</sup>)</div>
+          <div class="prefix">P, peta (10<sup>15</sup>)</div>
+        </section>
+      </div>
+    </div>
+
+    <h3>Instructions</h3>
+    <p>
+      Enter any valid number, then choose the "from" and "to" prefixes you want.
+      Adding a base unit is optional. Click <strong>Convert</strong> to see the
+      result below.
+    </p>
+    <p>
+      If you don't want a prefix for one of your conversions (your number
+      involves a base unit), simply do not selected a radio button. Use the
+      <strong>Clear</strong> button to remove previous selections.
+    </p>
+
+    <div class="metricForm">
+      <div class="From-Form">
+        <div class="labels">
+          <label for="metricFrom">From</label>
+        </div>
+
+        <input
+          type="text"
+          id="metricFrom"
+          placeholder="number"
+          name="metricFr"
+        />
+
+        <section>
+          <div class="radio">
+            <input type="radio" id="from-f" name="from" value="-15" />
+            <label for="from">f</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-p" name="from" value="-12" />
+            <label for="from">p</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-n" name="from" value="-9" />
+            <label for="from">n</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-u" name="from" value="-6" />
+            <label for="from">u</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-m" name="from" value="-3" />
+            <label for="from">m</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-c" name="from" value="-2" />
+            <label for="from">c</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-d" name="from" value="-1" />
+            <label for="from">d</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="from-da" name="from" value="1" />
+            <label for="from">da</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-h" name="from" value="2" />
+            <label for="from">h</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-k" name="from" value="3" />
+            <label for="from">k</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-M" name="from" value="6" />
+            <label for="from">M</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-G" name="from" value="9" />
+            <label for="from">G</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-T" name="from" value="12" />
+            <label for="from">T</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="from-P" name="from" value="15" />
+            <label for="from">P</label>
+          </div>
+        </section>
+      </div>
+      <!-- END From-Form -->
+
+      <div class="To-Form">
+        <div class="labels">
+          <label>To</label>
+        </div>
+
+        <section>
+          <div class="radio">
+            <input type="radio" id="to-f" name="to" value="-15" />
+            <label for="to">f</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-p" name="to" value="-12" />
+            <label for="to">p</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-n" name="to" value="-9" />
+            <label for="to">n</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-u" name="to" value="-6" />
+            <label for="to">u</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-m" name="to" value="-3" />
+            <label for="to">m</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-c" name="to" value="-2" />
+            <label for="to">c</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-d" name="to" value="-1" />
+            <label for="to">d</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="to-da" name="to" value="1" />
+            <label for="to">da</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-h" name="to" value="2" />
+            <label for="to">h</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-k" name="to" value="3" />
+            <label for="to">k</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-M" name="to" value="6" />
+            <label for="to">M</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-G" name="to" value="9" />
+            <label for="to">G</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-T" name="to" value="12" />
+            <label for="to">T</label>
+          </div>
+          <div class="radio">
+            <input type="radio" id="to-P" name="to" value="15" />
+            <label for="from">P</label>
+          </div>
+        </section>
+      </div>
+      <!-- END To-Form -->
+
+      <div class="physicsUnits">
+        <div class="labels">
+          <label>Add a physics base unit?</label>
+        </div>
+
+        <section>
+          <div class="radio">
+            <input type="radio" id="pu-g" name="phy-unit" value="g" />
+            <label for="phy-unit">g (grams)</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="pu-m" name="phy-unit" value="m" />
+            <label for="phy-unit">m (metres)</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="pu-s" name="phy-unit" value="s" />
+            <label for="phy-unit">s (seconds)</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="pu-N" name="phy-unit" value="N" />
+            <label for="phy-unit">N (Newtons)</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="pu-A" name="phy-unit" value="A" />
+            <label for="phy-unit">A (Amperes)</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="pu-V" name="phy-unit" value="V" />
+            <label for="phy-unit">V (Volts)</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" id="pu-T" name="phy-unit" value="T" />
+            <label for="phy-unit">T (Teslas)</label>
+          </div>
+        </section>
+      </div>
+
+      <button type="button" id="convert"><span>Convert</span></button>
+
+      <div class="calcAndShow">
+        <div class="labels">
+          <label>Result</label>
+        </div>
+
+        <div class="result">
+          <p id="metricToMetricResult">&nbsp;</p>
+        </div>
+
+        <button type="button" id="clear">Clear</button>
+      </div>
+      <!-- end of calcAndShow -->
+    </div>
+    <!-- end of metric form -->
+
+    <script src="./LessonJS/metricToMetric.js"></script>
+  </body>
+</html>
