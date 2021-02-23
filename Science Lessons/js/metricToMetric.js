@@ -5,7 +5,7 @@ let inputError = 0;
 // textbox event listener
 let numberInput = document.getElementById('metricFrom');
 numberInput.addEventListener('change', () => {
-  document.getElementById('metricToMetricResult').value = '';
+  document.getElementById('result').value = '';
 }, false);
 
 // button event listeners
@@ -94,11 +94,10 @@ function metricToMetricConvert() {
   if (toExp > fromExp) {
     decimalPlaces += Math.abs(fromExp - toExp);
   }
-  console.log(result, fromExp, toExp, decimalPlaces);
 
 	let conversionResult = `${n} ${fromPrefix}${physicsBaseUnit} = ${result.toFixed(decimalPlaces)} ${toPrefix}${physicsBaseUnit} `;
 
-  document.getElementById('metricToMetricResult').innerHTML =        conversionResult;
+  document.getElementById('result').innerHTML =        conversionResult;
 }
 
 function resetForm() {

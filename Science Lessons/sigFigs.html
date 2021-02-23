@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Significant Figures</title>
+
+    <!-- <link rel="icon" href="../img/tcubed-orange.ico" type="image/x-icon" /> -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/lesson.css" />
+    <link rel="stylesheet" href="./css/sigFig.css" />
+  </head>
+
+  <body>
+    <div class="coursePageHeader">
+      <h2>Significant Figures</h2>
+    </div>
+
+    <div class="courseSubHead">
+      <!-- <h3>Metric Prefixes</h3> -->
+      <p>The rules for determining significant figures are as follows:</p>
+
+      <ol>
+        <li>All non-zero numbers ARE significant.</li>
+        <li>
+          Zeros between two non-zero digits ARE significant.<br />
+          <span class="example">8007 has FOUR significant figures.</span>
+        </li>
+        <li>
+          Leading zeros are NOT significant.<br />
+          <span class="example"
+            >They're nothing more than "place holders." The numbers 0.72 and
+            0.0084 both have TWO significant figures.
+          </span>
+        </li>
+        <li>
+          Trailing zeros to the right of the decimal ARE significant.<br />
+          <span class="example">1.000 has FOUR significant figures.</span>
+        </li>
+        <li>
+          Trailing zeros in a whole number
+          <strong>with the decimal shown</strong> ARE significant.<br />
+          <span class="example">200. has THREE significant figures.</span>
+        </li>
+        <li>
+          Trailing zeros in a whole number
+          <strong>with no decimal shown</strong> are NOT significant.<br />
+          <span class="example">200 has ONE significant figure.</span>
+        </li>
+      </ol>
+    </div>
+
+    <h3>Instructions</h3>
+
+    <p>
+      Try to determine the number of signifant figures on your own first, then
+      click
+      <strong>Sig Figs</strong> to check your work!
+    </p>
+
+    <section class="input">
+      <label for="number">Number:</label>
+
+      <input type="number" id="number" placeholder="105.002" name="number" />
+
+      <button id="sigFigBtn">
+        <span>Sig Figs</span>
+      </button>
+    </section>
+
+    <section class="analysis" id="analysis">
+      <h3>Analysis</h3>
+      <table class="tg">
+        <!-- can't set column width in tbody if thead has col span??? -->
+        <!-- <thead>
+          <tr>
+            <th class="tg-7btt" colspan="2">Analysis</th>
+          </tr>
+        </thead> -->
+        <tbody>
+          <tr>
+            <td class="tg-0pky first"># of Sig Figs</td>
+            <td class="tg-0pky">Significant Digits</td>
+          </tr>
+          <tr>
+            <td class="tg-0pky"><span id="numOfSigFigs"></span></td>
+            <td class="tg-0pky"><span id="sigFigString">&nbsp;</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- <p id="numOfSigFigs"></p>
+      <p id="sigFigString"></p> -->
+
+      <p>Significant figures are red, other digits are black.</p>
+    </section>
+
+    <p>
+      <i
+        >Please let me know if you encouter any problems or bugs with this app
+        at: tshapera@wsd1.org.
+      </i>
+    </p>
+
+    <script src="./js/sigFig.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+:root {
+  --bg-color: #f9eccc;
+  --bg-color: #fdf8ed;
+  --primary-color: #009b72;
+  --primary-color: #4daa57;
+  --button-color: #8d89db;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  /* height: 100vh; */
+  padding: 0 0.25rem;
+  background-color: var(--bg-color);
+  color: black;
+}
+
+body {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.courseSubHead h3 {
+  color: var(--primary-color);
+}
+.courseSubHead div {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.courseSubHead section {
+  width: 33.333%;
+}
+
+sup {
+  vertical-align: baseline;
+  position: relative;
+  top: 1em;
+  font-size: 0.6em;
+}
+
+input {
+  width: 100%;
+}
+input[type='text'],
+input[type='number'] {
+  /* color: var(--t3-color5); */
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+}
+input[type='text']::-webkit-input-placeholder,
+input[type='number']::-webkit-input-placeholder {
+  /* Chrome */
+  color: #999;
+  font-style: italic;
+}
+input[type='text']::-moz-placeholder,
+input[type='number']::-moz-placeholder {
+  /* Mozilla Firefox */
+  color: #999;
+  font-style: italic;
+}
+input[type='text']:-ms-input-placeholder,
+input[type='number']:-ms-input-placeholder {
+  /* Internet Explorer */
+  color: #999;
+  font-style: italic;
+}
+input[type='text']:-o-input-placeholder,
+input[type='number']:-o-input-placeholder {
+  /* Opera */
+  color: #999;
+  font-style: italic;
+}
+
+button {
+  height: 1.5em;
+  width: 50%;
+  margin: 1em auto;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  border-radius: 0.8em;
+  color: #fff;
+  background-color: var(--button-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button:hover {
+  background-color: #6b67b4;
+}
+button:focus {
+  border: 2px solid #ef5b5b;
+}
+
+#result {
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+.result p {
+  margin: 5px 0 5px 0;
+  /* padding: 20px 0 0 0; */
+}
+
+.contact {
+  margin-bottom: 2rem;
+  font-style: italic;
+}

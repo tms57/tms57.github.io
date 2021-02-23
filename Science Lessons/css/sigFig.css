@@ -1,0 +1,106 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  margin-bottom: 0.6em;
+}
+.example {
+  font-size: 0.75em;
+  font-style: italic;
+  color: var(--primary-color);
+  /* margin-left: 1em; */
+  opacity: 0.8;
+}
+
+#sigFigString {
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  /* color: gray; */
+}
+.red,
+#numOfSigFigs {
+  color: red;
+}
+
+/* Analysis table */
+
+.tg {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 30em;
+  border-collapse: collapse;
+  border-color: #9abad9;
+  border-spacing: 0;
+}
+
+.tg td {
+  background-color: #f0effa; /* efeff0 */
+  border-color: var(--button-color);
+  border-style: solid;
+  border-width: 1px;
+  color: #444;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 7px 5px;
+  word-break: normal;
+}
+.tg th {
+  background-color: var(--button-color);
+  border-color: var(--button-color);
+  border-style: solid;
+  border-width: 1px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 19px;
+  word-break: normal;
+}
+.tg .tg-7btt {
+  border-color: inherit;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: top;
+}
+.tg .tg-0pky {
+  border-color: inherit;
+  text-align: center;
+  vertical-align: top;
+  width: auto;
+}
+
+.tg .tg-0pky.first {
+  width: 100px;
+}
+
+@media screen and (min-width: 468px) {
+  body {
+    padding: 0 1rem;
+  }
+  .input {
+    flex-direction: row;
+    align-items: center;
+    /* margin: 0; */
+    max-width: 768px;
+    height: 1.5em;
+  }
+
+  .input label {
+    flex: auto;
+    padding-right: 0.5em;
+  }
+
+  .input number {
+    flex: 1;
+    margin-left: 0.5em;
+  }
+
+  .input button {
+    flex: 0 0 100px;
+    margin-left: 0.5em;
+  }
+}
