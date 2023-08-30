@@ -1,0 +1,44 @@
+:root {
+  --clr-primary: purple;
+  --raisin-black: #1a181bff;
+  --antiflash-white: #f4f4f6ff;
+  --misty-rose: #fae1dfff;
+  /* --desert-sand: #e4c3adff; */
+  --desert-sand: #ad7755;
+}
+
+body {
+  color: var(--raisin-black);
+}
+
+header {
+  background-color: var(--clr-primary);
+}
+
+.wrapper {
+  background-color: var(--antiflash-white);
+}
+
+.sidenav {
+  background-color: var(--antiflash-white);
+}
+
+.sidenav ul a {
+  color: var(--forest-green);
+}
+
+.active {
+  color: var(--desert-sand) !important;
+}
+
+.sidenav a:hover {
+  color: var(--desert-sand);
+}
+
+section h3 {
+  color: var(--forest-green);
+}
+
+ol li::marker {
+  color: forest-green;
+}

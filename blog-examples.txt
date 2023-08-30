@@ -1,0 +1,12 @@
+images:
+https://pixabay.com/images/search/thoughts/
+https://pixabay.com/illustrations/picture-frame-banner-status-badge-3042585/
+
+https://pixabay.com/vectors/thinking-thought-bubbles-153993/
+https://pixabay.com/illustrations/woman-girl-balloon-thought-bubble-1172718/
+
+Examples:
+https://kristihines.com/
+https://helenabowen.com/
+https://www.devonstank.com/blog/code-shop-expansions
+https://tms57.github.io/WeeklyWebDevChallenge/currencyExchange/index.html

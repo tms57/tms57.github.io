@@ -1,0 +1,97 @@
+:root {
+  --lightgrey: rgb(240, 240, 240);
+  --seafoam: #3bb176;
+  --grey: #848c8eff;
+  --blood-orange: #ba2d0bff;
+  --orange: #ffa630ff;
+  --black: #000501ff;
+}
+
+header {
+  background-color: var(--blood-orange);
+}
+
+.wrapper {
+  background-color: #fff;
+}
+
+.sidenav {
+  background-color: var(--lightgrey);
+}
+
+.sidenav ul a {
+  color: var(--seafoam);
+}
+
+.active {
+  color: var(--blood-orange) !important;
+}
+
+.sidenav a:hover {
+  color: var(--blood-orange);
+}
+
+section h3 {
+  color: var(--seafoam);
+}
+
+ol li::marker {
+  color: green;
+}
+
+/* section p {
+  line-height: 1.5;
+} */
+
+figure {
+  margin: 0 0 1rem 0;
+  width: 100%;
+  max-width: 250px; /* This should really be in a separate css file */
+}
+
+.pics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pics img {
+  width: 100%;
+  align-self: center;
+}
+
+/* timeline styles */
+.dates {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.timeline .desc-item {
+  margin: 0 0 0.5rem 0.8rem;
+  line-height: 1.5;
+}
+
+/* sideNav styles (Tablet & up)*/
+@media (min-width: 700px) {
+  figure {
+    margin: 0;
+  }
+
+  .pics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .pics img {
+    width: 100%;
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+  }
+  .timeline .desc-item {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+  }
+}
