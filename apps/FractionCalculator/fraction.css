@@ -15,7 +15,7 @@ body {
   /* flex-wrap: wrap; */
   justify-content: space-between;
   align-items: center;
-  width: 230px;
+  width: 260px;
   margin: 0 auto;
 }
 
@@ -80,6 +80,7 @@ input[type="number"] {
 }
 #operation {
   font-size: 1.5rem;
+  max-width: 40px;
 }
 
 /* option:hover {
