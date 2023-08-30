@@ -12,7 +12,7 @@ body {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
   align-items: center;
   width: 230px;
@@ -42,12 +42,12 @@ input {
   font-size: 1.5rem;
 }
 /* remove number arrows from inputs */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 /* remove number arrows from inputs */
@@ -75,6 +75,9 @@ input[type='number'] {
   align-self: center;
 }
 
+.operators {
+  max-width: 40px;
+}
 #operation {
   font-size: 1.5rem;
 }
