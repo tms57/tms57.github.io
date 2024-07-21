@@ -1,0 +1,44 @@
+Week 1:
+
+Match 1: Josh vs Micheal
+Match 2: Andrew vs Trey
+Match 3: Cole vs Chris
+Match 4: Dan vs Ted
+
+Week 2:
+
+Match 1: Josh vs Andrew
+Match 2: Micheal vs Trey
+Match 3: Cole vs Dan
+Match 4: Chris vs Ted
+Week 3:
+
+Match 1: Josh vs Trey
+Match 2: Micheal vs Andrew
+Match 3: Cole vs Ted
+Match 4: Chris vs Dan
+
+Week 4:
+
+Match 1: Josh vs Cole
+Match 2: Micheal vs Chris
+Match 3: Andrew vs Dan
+Match 4: Trey vs Ted
+Week 5:
+
+Match 1: Josh vs Chris
+Match 2: Micheal vs Cole
+Match 3: Andrew vs Ted
+Match 4: Trey vs Dan
+Week 6:
+
+Match 1: Josh vs Dan
+Match 2: Micheal vs Ted
+Match 3: Andrew vs Cole
+Match 4: Trey vs Chris
+Week 7:
+
+Match 1: Josh vs Ted
+Match 2: Micheal vs Dan
+Match 3: Andrew vs Chris
+Match 4: Trey vs Cole
