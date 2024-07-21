@@ -1,0 +1,64 @@
+
+*** css for grid (not using for now)
+.blue_white_grid {
+  display: grid;
+  grid-template-rows: repeat(8, 20px);
+  grid-template-columns: repeat(8, 20px);
+  grid-gap: 1px;
+  background-color: #fff; /* Background color */
+}
+
+.blue_white_grid > div {
+  background-color: #ddd; /* Grid item color */
+  border: 1px solid #000; /* Border color */
+  width: 20px;
+  height: 20px;
+}
+
+I have the following players in a golf match play league:
+Player 1, Player 2, Player 3, Player 4, Player 5, Player 6, Player 7, Player 8
+
+Please set up a schedule where each player plays a new opponent each week for seven weeks.
+
+Week 1:
+
+Match 1: Player 1 vs Player 2
+Match 2: Player 3 vs Player 4
+Match 3: Player 5 vs Player 6
+Match 4: Player 7 vs Player 8
+Week 2:
+
+Match 1: Player 1 vs Player 3
+Match 2: Player 2 vs Player 4
+Match 3: Player 5 vs Player 7
+Match 4: Player 6 vs Player 8
+Week 3:
+
+Match 1: Player 1 vs Player 4
+Match 2: Player 2 vs Player 3
+Match 3: Player 5 vs Player 8
+Match 4: Player 6 vs Player 7
+Week 4:
+
+Match 1: Player 1 vs Player 5
+Match 2: Player 2 vs Player 6
+Match 3: Player 3 vs Player 7
+Match 4: Player 4 vs Player 8
+Week 5:
+
+Match 1: Player 1 vs Player 6
+Match 2: Player 2 vs Player 5
+Match 3: Player 3 vs Player 8
+Match 4: Player 4 vs Player 7
+Week 6:
+
+Match 1: Player 1 vs Player 7
+Match 2: Player 2 vs Player 8
+Match 3: Player 3 vs Player 5
+Match 4: Player 4 vs Player 6
+Week 7:
+
+Match 1: Player 1 vs Player 8
+Match 2: Player 2 vs Player 7
+Match 3: Player 3 vs Player 6
+Match 4: Player 4 vs Player 5

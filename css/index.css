@@ -111,6 +111,18 @@ body {
   color: green;
   z-index: 2;
 }
+.main nav .lartersLink {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+}
+.main nav .lartersLink .lartersDesc {
+  position: absolute;
+  top: 19px;
+  left: 19px;
+  color: green;
+  z-index: 2;
+}
 .main nav .blog {
   position: absolute;
   top: 15%;
