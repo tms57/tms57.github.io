@@ -113,8 +113,8 @@ body {
 }
 .main nav .lartersLink {
   position: absolute;
-  top: 50%;
-  left: 0%;
+  top: 45%;
+  left: 6%;
 }
 .main nav .lartersLink .lartersDesc {
   position: absolute;

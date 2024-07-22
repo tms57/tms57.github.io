@@ -16,49 +16,71 @@
 }
 
 I have the following players in a golf match play league:
-Player 1, Player 2, Player 3, Player 4, Player 5, Player 6, Player 7, Player 8
+Player 1, Player 2, Player 3, Player 4, Player 5
 
-Please set up a schedule where each player plays a new opponent each week for seven weeks.
+Please set up a schedule where each player plays a new opponent each week for four weeks.
+
+Blue-White Division
+
+Week 1:
+
+Match 1: Josh vs Michael
+Match 2: Trey vs Cole
+Match 3: Chris vs Dan
+
+Week 2:
+
+Match 1: Josh vs Trey
+Match 2: Michael vs Chris
+Match 3: Cole vs Dan
+
+Week 3:
+
+Match 1: Josh vs Cole
+Match 2: Michael vs Trey
+Match 3: Chris vs Dan
+
+Week 4:
+
+Match 1: Josh vs Chris
+Match 2: Michael vs Cole
+Match 3: Trey vs Dan
+
+Week 5:
+
+Match 1: Josh vs Dan
+Match 2: Michael vs Trey
+Match 3: Cole vs Chris
+
+Eggshell and Beige Divisions:
 
 Week 1:
 
 Match 1: Player 1 vs Player 2
 Match 2: Player 3 vs Player 4
-Match 3: Player 5 vs Player 6
-Match 4: Player 7 vs Player 8
+Player 5 has a bye
+
 Week 2:
 
 Match 1: Player 1 vs Player 3
-Match 2: Player 2 vs Player 4
-Match 3: Player 5 vs Player 7
-Match 4: Player 6 vs Player 8
+Match 2: Player 2 vs Player 5
+Player 4 has a bye
+
 Week 3:
 
 Match 1: Player 1 vs Player 4
-Match 2: Player 2 vs Player 3
-Match 3: Player 5 vs Player 8
-Match 4: Player 6 vs Player 7
+Match 2: Player 3 vs Player 5
+Player 2 has a bye
+
 Week 4:
 
 Match 1: Player 1 vs Player 5
-Match 2: Player 2 vs Player 6
-Match 3: Player 3 vs Player 7
-Match 4: Player 4 vs Player 8
+Match 2: Player 2 vs Player 4
+Player 3 has a bye
+
 Week 5:
 
-Match 1: Player 1 vs Player 6
-Match 2: Player 2 vs Player 5
-Match 3: Player 3 vs Player 8
-Match 4: Player 4 vs Player 7
-Week 6:
+Match 1: Player 2 vs Player 3
+Match 2: Player 4 vs Player 5
 
-Match 1: Player 1 vs Player 7
-Match 2: Player 2 vs Player 8
-Match 3: Player 3 vs Player 5
-Match 4: Player 4 vs Player 6
-Week 7:
-
-Match 1: Player 1 vs Player 8
-Match 2: Player 2 vs Player 7
-Match 3: Player 3 vs Player 6
-Match 4: Player 4 vs Player 5
+Player 1 has a bye
