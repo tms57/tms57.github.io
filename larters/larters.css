@@ -24,3 +24,35 @@ header {
   text-align: center;
   padding: 1rem;
 }
+
+#blue-white .week {
+  background-color: lightblue;
+}
+#eggshell .week {
+  background-color: rgb(235, 230, 230);
+}
+#beige .week {
+  background-color: rgb(246, 246, 221);
+}
+
+.schedule {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.week {
+  width: 180px;
+  height: auto;
+  /* margin: 1rem; */
+  padding: 0.5rem;
+
+  border-radius: 5px;
+}
+
+.dates {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  margin-bottom: 0.5rem;
+}

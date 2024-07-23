@@ -16,41 +16,37 @@
 }
 
 I have the following players in a golf match play league:
-Player 1, Player 2, Player 3, Player 4, Player 5
+Player 1, Player 2, Player 3, Player 4, Player 5, Player 6
 
-Please set up a schedule where each player plays a new opponent each week for four weeks.
+Please set up a schedule where each player plays a new opponent each week for five weeks AND each player plays each other player once.
 
 Blue-White Division
 
 Week 1:
 
-Match 1: Josh vs Michael
-Match 2: Trey vs Cole
-Match 3: Chris vs Dan
-
+Match 1: Josh B vs Micheal T
+Match 2: Trey S vs Cole D
+Match 3: Chris C vs Dan R
 Week 2:
 
-Match 1: Josh vs Trey
-Match 2: Michael vs Chris
-Match 3: Cole vs Dan
-
+Match 1: Josh B vs Trey S
+Match 2: Micheal T vs Chris C
+Match 3: Cole D vs Dan R
 Week 3:
 
-Match 1: Josh vs Cole
-Match 2: Michael vs Trey
-Match 3: Chris vs Dan
-
+Match 1: Josh B vs Cole D
+Match 2: Micheal T vs Dan R
+Match 3: Trey S vs Chris C
 Week 4:
 
-Match 1: Josh vs Chris
-Match 2: Michael vs Cole
-Match 3: Trey vs Dan
-
+Match 1: Josh B vs Chris C
+Match 2: Micheal T vs Cole D
+Match 3: Trey S vs Dan R
 Week 5:
 
-Match 1: Josh vs Dan
-Match 2: Michael vs Trey
-Match 3: Cole vs Chris
+Match 1: Josh B vs Dan R
+Match 2: Micheal T vs Trey S
+Match 3: Cole D vs Chris C
 
 Eggshell and Beige Divisions:
 
@@ -84,3 +80,30 @@ Match 1: Player 2 vs Player 3
 Match 2: Player 4 vs Player 5
 
 Player 1 has a bye
+
+****
+Week 1:
+
+Match 1: Josh B vs Micheal T
+Match 2: Trey S vs Cole D
+Match 3: Chris C vs Dan R
+Week 2:
+
+Match 1: Josh B vs Trey S
+Match 2: Micheal T vs Chris C
+Match 3: Cole D vs Dan R
+Week 3:
+
+Match 1: Josh B vs Cole D
+Match 2: Micheal T vs Dan R
+Match 3: Trey S vs Chris C
+Week 4:
+
+Match 1: Josh B vs Chris C
+Match 2: Micheal T vs Cole D
+Match 3: Trey S vs Dan R
+Week 5:
+
+Match 1: Josh B vs Dan R
+Match 2: Micheal T vs Trey S
+Match 3: Cole D vs Chris C
