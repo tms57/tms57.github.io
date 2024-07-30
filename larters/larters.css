@@ -20,16 +20,18 @@ body {
 }
 
 header {
-  background-color: #b8b5d3;
+  background-color: rgb(67, 125, 77);
+  /* border-bottom: 1px solid rgb(67, 125, 77); */
   text-align: center;
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 #blue-white .week {
-  background-color: lightblue;
+  background-color: rgb(207, 226, 243);
 }
 #eggshell .week {
-  background-color: rgb(235, 230, 230);
+  /* background-color: rgb(235, 230, 230); */
+  background-color: #ebe6e6;
 }
 #beige .week {
   background-color: rgb(246, 246, 221);
@@ -55,4 +57,61 @@ header {
   font-weight: bold;
   border-bottom: 1px solid black;
   margin-bottom: 0.5rem;
+}
+
+.player-grid {
+  width: 100%;
+  max-width: 400px;
+}
+.player-standings {
+  width: 100px;
+}
+
+/* Player Tables */
+
+table {
+  /* margin: 0 auto; */
+  /* width: 95%; */
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.player.top_header {
+  text-align: left;
+  transform: rotate(270deg);
+  height: 70px;
+  padding-left: 0.3rem;
+  width: 70px;
+}
+
+.player.side_header {
+  text-align: left;
+  width: 70px;
+  background-color: rgb(207, 226, 243);
+  padding-left: 0.3rem;
+}
+
+.player {
+  /* padding: 15px 8px;
+  background-color: #f2f2f2; */
+  text-align: left;
+}
+
+th td {
+  padding: 15px;
+  text-align: left;
+}
+
+tr td {
+  text-align: center;
+  width: 30px;
+}
+
+.bg_gray {
+  background-color: #f2f2f2;
 }
