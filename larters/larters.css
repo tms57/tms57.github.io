@@ -67,7 +67,31 @@ header {
   width: 100px;
 }
 
-/* Player Tables */
+/* Player Grid */
+
+.player-grid {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(8, 1fr);
+  padding: 0;
+  gap: 0;
+}
+
+.player-grid * {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.player-grid .label {
+  padding: 4px 0.3px 0 0.5px;
+  background-color: rgb(207, 226, 243);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.player-grid .label.side {
+  width: 60px;
+}
 
 table {
   /* margin: 0 auto; */
