@@ -26,6 +26,10 @@ header {
   /* padding: 1rem; */
 }
 
+#gen-news p {
+  margin-top: 1rem;
+}
+
 #blue-white .week {
   background-color: rgb(207, 226, 243);
 }
