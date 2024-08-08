@@ -16,20 +16,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
   blueWhite.innerHTML = generatePlayerGrid(blue_white)
 
   function generatePlayerGrid(division) {
-    let html = '<div class="player-grid"><span class="label">Player</span>'
+    let html = '<h3>Head To Head</h3>'
+    html += '<div class="player-grid"><span class="label side">Player</span>'
 
     // top label row
     division.forEach((player) => {
-      html += `<span class="label">${player.name}</span>`
+      html += `<span class="label top">${player.name}</span>`
     })
+    html += `<span class="label top">Total</span>`
 
-    for (let player = 0; player < division.lengh; player++) {
-      html += `<span class="label">${player.name}</span>`
-      for (let i = 0; i < player.scores.lengh; i++) {
-        html += '<span>${player.scores[i]}</span>'
+    // get each player, scores, & totals
+    for (let playerIndex = 0; playerIndex < division.length; playerIndex++) {
+      let player = division[playerIndex]
+      html += `<span class="label side">${player.name}</span>`
+      for (let i = 0; i < player.scores.length; i++) {
+        // *** this is line 30
+        html += `<span>${player.scores[i]}</span>`
       }
     }
     html += '</div>'
+
     return html
   }
 
