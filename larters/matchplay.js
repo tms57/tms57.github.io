@@ -1,37 +1,65 @@
 document.addEventListener('DOMContentLoaded', (event) => {
   const blueWhite = document.getElementById('blue-white-grid')
-  // const eggShell = document.getElementById('eggshell')
-  // const beige = document.getElementById('beige')
+  const eggShell = document.getElementById('eggshell-grid')
+  const Beige = document.getElementById('beige-grid')
 
   const blue_white = [
-    { name: 'Josh', scores: ['X', 2, 1.5, 2.5, 1.5, 1, 8.5] },
-    { name: 'Micheal', scores: [1, 'X', 2, 0, 3, 1.5, 7.5] },
-    { name: 'Trey', scores: [1.5, 1, 'X', 2, 3, 1, 8.5] },
-    { name: 'Cole', scores: [0.5, 3, 2.5, 'X', 2, 1.5, 9.5] },
-    { name: 'Chris', scores: [1.5, 1, 2, 3, 'X', 1, 8.5] },
-    { name: 'Dan', scores: [2, 3, 2, 1, 3, 'X', 11] },
+    { name: 'Josh', scores: ['X', 2.5, '-', '-', '-', '-', 2.5] },
+    { name: 'Micheal', scores: [0.5, 'X', '-', '-', '-', '-', 0.5] },
+    { name: 'Trey', scores: ['-', '-', 'X', 0, '-', '-', 0] },
+    { name: 'Cole', scores: ['-', '-', 3, 'X', '-', '-', 3] },
+    { name: 'Chris', scores: ['-', '-', '-', '-', 'X', 3, 3] },
+    { name: 'Dan', scores: ['-', '-', '-', '-', 0, 'X', 0] },
   ]
 
-  console.log(getStandingsArray(blue_white))
-  blueWhite.innerHTML = generatePlayerGrid(blue_white)
+  const eggshell = [
+    { name: 'Aaron', scores: ['X', 3, '-', '-', '-', 3] },
+    { name: 'Justin', scores: [0, 'X', '-', '-', '-', 0] },
+    { name: 'Francesco', scores: ['-', '-', 'X', '-', '-', 0] },
+    { name: 'Pierre', scores: ['-', '-', '-', 'X', '-', 0] },
+    { name: 'Dan', scores: ['-', '-', '-', '-', 'X', 0] },
+  ]
 
-  function generatePlayerGrid(division) {
+  const beige = [
+    { name: 'Conrad', scores: ['X', '-', '-', '-', 0] },
+    { name: 'Keegan', scores: ['-', 'X', 1, '-', 1] },
+    { name: 'Marc', scores: ['-', 2, 'X', '-', 2] },
+    { name: 'Garry', scores: ['-', '-', '-', 'X', 0] },
+  ]
+
+  // console.log(getStandingsArray(blue_white))
+  blueWhite.innerHTML = generatePlayerGrid(blue_white, 'lightblue')
+  let playerGrid = document.querySelector('#blue-white-grid .player-grid')
+  playerGrid.style.gridTemplateColumns = `80px repeat(${blue_white[0].scores.length}, 1fr)`
+
+  eggShell.innerHTML = generatePlayerGrid(eggshell, 'eggshell')
+  playerGrid = document.querySelector('#eggshell-grid .player-grid')
+  playerGrid.style.gridTemplateColumns = `80px repeat(${eggshell[0].scores.length}, 1fr)`
+
+  Beige.innerHTML = generatePlayerGrid(beige, 'beige')
+  playerGrid = document.querySelector('#beige-grid .player-grid')
+  playerGrid.style.gridTemplateColumns = `80px repeat(${beige[0].scores.length}, 1fr)`
+
+  function generatePlayerGrid(division, bgColor) {
     let html = '<h3>Head To Head</h3>'
-    html += '<div class="player-grid"><span class="label side">Player</span>'
+    html += `<div class="player-grid"><span class="label side ${bgColor}">Player</span>`
 
     // top label row
     division.forEach((player) => {
-      html += `<span class="label top">${player.name}</span>`
+      html += `<span class="label top ${bgColor}">${player.name}</span>`
     })
-    html += `<span class="label top">Total</span>`
+    html += `<span class="label top ${bgColor}">Total</span>`
 
     // get each player, scores, & totals
     for (let playerIndex = 0; playerIndex < division.length; playerIndex++) {
       let player = division[playerIndex]
-      html += `<span class="label side">${player.name}</span>`
+      html += `<span class="label side ${bgColor}">${player.name}</span>`
       for (let i = 0; i < player.scores.length; i++) {
-        // *** this is line 30
-        html += `<span>${player.scores[i]}</span>`
+        if (player.scores[i] === 'X') {
+          html += `<span class="shaded">${player.scores[i]}</span>`
+        } else {
+          html += `<span>${player.scores[i]}</span>`
+        }
       }
     }
     html += '</div>'
@@ -50,21 +78,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // console.log(sortedByTotalPoints)
     return sortedByTotalPoints
   }
-
-  const eggshell = [
-    { name: 'Aaron', scores: ['X', '-', '-', '-', '-', 0] },
-    { name: 'Justin', scores: ['-', 'X', '-', '-', '-', 0] },
-    { name: 'Francesco', scores: ['-', '-', 'X', '-', '-', 0] },
-    { name: 'Pierre', scores: ['-', '-', '-', 'X', '-', 0] },
-    { name: 'Dan', scores: ['-', '-', '-', '-', 'X', 0] },
-  ]
-
-  const beige = [
-    { name: 'Conrad', scores: ['X', 2, '-', '-', 2] },
-    { name: 'Keegan', scores: [1, 'X', '-', '-', 1] },
-    { name: 'Marc', scores: ['-', '-', 'X', '-', 0] },
-    { name: 'Garry', scores: ['-', '-', '-', 'X', 0] },
-  ]
-
-  console.log('testing')
 })
