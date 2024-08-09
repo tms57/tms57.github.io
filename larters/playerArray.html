@@ -5,19 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Player Array</title>
   </head>
-  <style></style>
-  <body>
-    <button id="makeArray">Generate Player Array</button>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <label for="arrayCode">Player Array Code:</label>
-    <textarea name="arrayCode" id="arrayCode" rows="20" cols="50"></textarea>
+    h2 {
+      margin: 1rem;
+      text-align: center;
+    }
+
+    .wrapper {
+      display: flex;
+      max-width: 700px;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .left,
+    .right {
+      width: 40%;
+    }
+    img {
+      width: 100%;
+    }
+    .instructions h3 {
+      margin: 1rem 0;
+    }
+    .instructions ol {
+      padding-inline-start: 1rem;
+    }
+    .instructions li {
+      margin-bottom: 0.3rem;
+    }
+
+    button {
+      width: 80px;
+      height: 65px;
+      border-radius: 5px;
+      padding: 7px 8px;
+      color: #fff;
+      background-color: #68ba68;
+      align-self: center;
+    }
+
+    .right textarea {
+      margin-top: 0.35rem;
+    }
+  </style>
+  <body>
+    <h2>Matchplay Grid to Objects</h2>
+    <div class="wrapper">
+      <div class="left">
+        <img
+          src="../larters/img/gridHighlight.JPG"
+          alt="grid sheet highlighted"
+        />
+        <article class="instructions">
+          <h3>How to use thi app.</h3>
+          <ol>
+            <li>
+              In your Google sheet hightlight the entire player grid EXCEPT the
+              top row (that starts with "Player").
+            </li>
+            <li>Copy the highlighted area.</li>
+            <li>Click the green button.</li>
+            <li>
+              The code is copied to the clipboard as well as the textarea to the
+              right.
+            </li>
+            <li>Now go to VS Code and paste it!</li>
+          </ol>
+        </article>
+      </div>
+
+      <button id="makeArray">Generate Player Array</button>
+
+      <div class="right">
+        <label for="arrayCode">Player Array Code:</label>
+        <textarea
+          name="arrayCode"
+          id="arrayCode"
+          rows="20"
+          cols="50"
+        ></textarea>
+      </div>
+    </div>
     <script>
       /*
       This utility takes google sheets clipboard data for players
       and writes a javaScript oject array for use in the matchplay website's
       script.js file.
-      DON'T include the "Player" row or the last column of the google sheet grid
+      DON'T include the "Player" row.
       */
+
       let clipboardData = ''
       let dataBtn = document.getElementById('makeArray')
 
