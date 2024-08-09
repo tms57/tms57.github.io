@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const eggShell = document.getElementById('eggshell-grid')
   const Beige = document.getElementById('beige-grid')
 
+  const blueWhiteStandings = document.getElementById('blue-white-standings')
+  const eggShellStandings = document.getElementById('eggshell-standings')
+  const beigeStandings = document.getElementById('beige-standings')
+
   const blue_white = [
     { name: 'Josh', scores: ['X', 2.5, '-', '-', '-', '-', 2.5] },
     { name: 'Micheal', scores: [0.5, 'X', '-', '-', '-', '-', 0.5] },
@@ -27,18 +31,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     { name: 'Garry', scores: ['-', '-', '-', 'X', 0] },
   ]
 
-  // console.log(getStandingsArray(blue_white))
+  // Dynamically generate each division's player head-to-head grid
   blueWhite.innerHTML = generatePlayerGrid(blue_white, 'lightblue')
   let playerGrid = document.querySelector('#blue-white-grid .player-grid')
   playerGrid.style.gridTemplateColumns = `80px repeat(${blue_white[0].scores.length}, 1fr)`
+  blueWhiteStandings.innerHTML = generatePlayerStandings(
+    blue_white,
+    'lightblue'
+  )
 
   eggShell.innerHTML = generatePlayerGrid(eggshell, 'eggshell')
   playerGrid = document.querySelector('#eggshell-grid .player-grid')
   playerGrid.style.gridTemplateColumns = `80px repeat(${eggshell[0].scores.length}, 1fr)`
+  eggShellStandings.innerHTML = generatePlayerStandings(eggshell, 'eggshell')
 
   Beige.innerHTML = generatePlayerGrid(beige, 'beige')
   playerGrid = document.querySelector('#beige-grid .player-grid')
   playerGrid.style.gridTemplateColumns = `80px repeat(${beige[0].scores.length}, 1fr)`
+  beigeStandings.innerHTML = generatePlayerStandings(beige, 'beige')
 
   function generatePlayerGrid(division, bgColor) {
     let html = '<h3>Head To Head</h3>'
@@ -75,7 +85,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }))
       .sort((a, b) => b.totalPoints - a.totalPoints)
 
-    // console.log(sortedByTotalPoints)
     return sortedByTotalPoints
+  }
+
+  function generatePlayerStandings(division, bgColor) {
+    let sortedStandingArr = getStandingsArray(division)
+
+    let html = '<h3>Standings</h3>'
+    html += `<div class="standings-grid"><span class="label side ${bgColor}">Player</span>
+      <span class="label top ${bgColor}">Points</span>`
+
+    sortedStandingArr.forEach((player) => {
+      html += `<span class="label side ${bgColor}">${player.name}</span>`
+      html += `<span class="label top ${bgColor}">${player.totalPoints}</span>`
+    })
+
+    html += '</div>'
+
+    return html
   }
 })

@@ -26,6 +26,10 @@ header {
   /* padding: 1rem; */
 }
 
+h3 {
+  margin: 0.5rem 0;
+}
+
 #blue-white .week {
   background-color: rgb(207, 226, 243);
 }
@@ -60,9 +64,9 @@ header {
   margin-bottom: 0.5rem;
 }
 
-.player-standings {
+/* .player-standings {
   width: 100px;
-}
+} */
 
 /* Player Grid */
 
@@ -74,19 +78,22 @@ header {
   max-width: 400px;
 }
 
-.player-grid * {
+.player-grid *,
+.standings-grid * {
   text-align: center;
   border: 1px solid black;
 }
 
-.player-grid .label {
+.player-grid .label,
+.standings-grid .label {
   padding: 4px 0.3px 0 0.5px;
   /* background-color: rgb(207, 226, 243); */
   font-size: 12px;
   font-weight: bold;
 }
 
-.player-grid .label.top {
+.player-grid .label.top,
+.standings-grid label.top {
   text-align: center;
 }
 
@@ -114,7 +121,36 @@ header {
   background-color: rgb(246, 246, 221);
 }
 
+.standings-grid .label.side {
+  text-align: left;
+  padding-left: 0.3rem;
+}
+
 .shaded {
   /* background-color: #f2f2f2; */
   background-color: #e0dddd;
+}
+
+/* Standings Grid styles */
+.standings-grid .label.top.lightblue,
+.standings-grid .label.side.lightblue,
+.standings-grid span .lightblue {
+  background-color: rgb(207, 226, 243);
+}
+.standings-grid .label.top.eggshell,
+.standings-grid .label.side.eggshell,
+.standings-grid span .eggshell {
+  background-color: rgb(235, 230, 230);
+}
+
+.standings-grid .label.top.beige,
+.standings-grid .label.side.beige,
+.standings-grid span .beige {
+  background-color: rgb(246, 246, 221);
+}
+
+.standings-grid {
+  display: grid;
+  grid-template-columns: 80px 50px;
+  gap: 0;
 }
