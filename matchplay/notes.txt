@@ -188,3 +188,68 @@ function generateArrayCode(array) {
 {name: "Chris",scores: [ 1.5, 1, 2, 3, X, 1, 8.5]},
 {name: "Dan",scores: [ 2, 3, 2, 1, 3, X, 11]}
 ]
+
+*** player-grid HTML
+            <span class="label">Player</span>
+            <span class="label">Josh</span>
+            <span class="label">Micheal</span>
+            <span class="label">Trey</span>
+            <span class="label">Cole</span>
+            <span class="label">Chris</span>
+            <span class="label">Dan</span>
+            <span class="label">Total</span>
+
+            <span class="label">Josh</span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Micheal</span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Trey</span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Cole</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Chris</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Dan</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span>0</span>
+***

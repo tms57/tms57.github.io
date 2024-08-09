@@ -60,18 +60,21 @@
         for (i = 0; i < playerStringsArray.length; i++) {
           playerArr.push(playerStringsArray[i].split('\t'))
         }
-
         // this is a workaround - filter doesn't work with nested arrays!
         // remove X's from array
+        /*
         playerArr = playerArr.map((player) =>
           player.filter((item) => item !== 'X')
         )
+        */
 
-        // for each player convert points to numeric data
+        // for each player keep X's or dashes (not played yet)
         for (p = 0; p < playerArr.length; p++) {
           for (element = 1; element < playerArr[p].length; element++) {
             // skip player name (element 0)
-            playerArr[p][element] = playerArr[p][element] * 1
+            if (playerArr[p][element] != 'X' && playerArr[p][element] != '-') {
+              playerArr[p][element] = playerArr[p][element] * 1
+            }
           }
         }
         return playerArr
@@ -85,7 +88,12 @@
           jsArrayCode += '{name: ' + '"' + array[player][0] + '", '
           jsArrayCode += 'scores: ['
           for (let item = 1; item < array[player].length; item++) {
-            jsArrayCode += ' ' + array[player][item]
+            // write X as 'X'
+            if (array[player][item] === 'X' || array[player][item] === '-') {
+              jsArrayCode += "'" + array[player][item] + "'"
+            } else {
+              jsArrayCode += ' ' + array[player][item]
+            }
             if (item < array[player].length - 1) {
               jsArrayCode += ','
             } else {

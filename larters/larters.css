@@ -26,6 +26,10 @@ header {
   /* padding: 1rem; */
 }
 
+h3 {
+  margin: 0.5rem 0;
+}
+
 #gen-news p {
   margin-top: 1rem;
 }
@@ -46,6 +50,7 @@ header {
   flex-wrap: wrap;
   margin-top: 1rem;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .week {
@@ -63,59 +68,93 @@ header {
   margin-bottom: 0.5rem;
 }
 
+/* .player-standings {
+  width: 100px;
+} */
+
+/* Player Grid */
+
 .player-grid {
-  width: 100%;
+  display: grid;
+  place-content: center;
+  grid-template-columns: 60px repeat(7, 1fr);
+  gap: 0;
   max-width: 400px;
 }
-.player-standings {
-  width: 100px;
-}
 
-/* Player Tables */
-
-table {
-  /* margin: 0 auto; */
-  /* width: 95%; */
-  border-collapse: collapse;
-}
-
-table,
-th,
-td {
+.player-grid *,
+.standings-grid * {
+  text-align: center;
   border: 1px solid black;
 }
 
-.player.top_header {
-  text-align: left;
-  transform: rotate(270deg);
-  height: 70px;
-  padding-left: 0.3rem;
-  width: 70px;
+.player-grid .label,
+.standings-grid .label {
+  padding: 4px 0.3px 0 0.5px;
+  /* background-color: rgb(207, 226, 243); */
+  font-size: 12px;
+  font-weight: bold;
 }
 
-.player.side_header {
-  text-align: left;
-  width: 70px;
-  background-color: rgb(207, 226, 243);
-  padding-left: 0.3rem;
-}
-
-.player {
-  /* padding: 15px 8px;
-  background-color: #f2f2f2; */
-  text-align: left;
-}
-
-th td {
-  padding: 15px;
-  text-align: left;
-}
-
-tr td {
+.player-grid .label.top,
+.standings-grid label.top {
   text-align: center;
-  width: 30px;
 }
 
-.bg_gray {
-  background-color: #f2f2f2;
+.player-grid .label.side {
+  text-align: left;
+  padding-left: 0.3rem;
+}
+
+/* background colors for divisions (generatePlayerGrid function */
+.player-grid .label.top.lightblue,
+.player-grid .label.side.lightblue,
+.player-grid span .lightblue {
+  background-color: rgb(207, 226, 243);
+}
+
+.player-grid .label.top.eggshell,
+.player-grid .label.side.eggshell,
+.player-grid span .eggshell {
+  background-color: rgb(235, 230, 230);
+}
+
+.player-grid .label.top.beige,
+.player-grid .label.side.beige,
+.player-grid span .beige {
+  background-color: rgb(246, 246, 221);
+}
+
+.standings-grid .label.side {
+  text-align: left;
+  padding-left: 0.3rem;
+}
+
+.shaded {
+  /* background-color: #f2f2f2; */
+  background-color: #e0dddd;
+}
+
+/* Standings Grid styles */
+.standings-grid .label.top.lightblue,
+.standings-grid .label.side.lightblue,
+.standings-grid span .lightblue {
+  background-color: rgb(207, 226, 243);
+}
+.standings-grid .label.top.eggshell,
+.standings-grid .label.side.eggshell,
+.standings-grid span .eggshell {
+  background-color: rgb(235, 230, 230);
+}
+
+.standings-grid .label.top.beige,
+.standings-grid .label.side.beige,
+.standings-grid span .beige {
+  background-color: rgb(246, 246, 221);
+}
+
+.standings-grid {
+  display: grid;
+  grid-template-columns: 80px 50px;
+  gap: 0;
 }
