@@ -253,3 +253,6 @@ function generateArrayCode(array) {
             <span>X</span>
             <span>0</span>
 ***
+
+SH-AP-ET-M431LR
+IwbiFF57 Email p

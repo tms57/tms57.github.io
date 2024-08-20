@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   const eggshell = [
     { name: 'Aaron', scores: ['X', 3, '-', '-', '-', 3] },
-    { name: 'Justin', scores: [0, 'X', '-', '-', '-', 0] },
+    { name: 'Justin', scores: [0, 'X', '-', '-', 0.5, 0.5] },
     { name: 'Francesco', scores: ['-', '-', 'X', '-', '-', 0] },
     { name: 'Pierre', scores: ['-', '-', '-', 'X', '-', 0] },
-    { name: 'Dan', scores: ['-', '-', '-', '-', 'X', 0] },
+    { name: 'Dan', scores: ['-', 2.5, '-', '-', 'X', 2.5] },
   ]
 
   const beige = [
-    { name: 'Conrad', scores: ['X', '-', '-', '-', 0] },
-    { name: 'Keegan', scores: ['-', 'X', 1, '-', 1] },
+    { name: 'Conrad', scores: ['X', 2, '-', '-', 2] },
+    { name: 'Keegan', scores: [1, 'X', 1, '-', 2] },
     { name: 'Marc', scores: ['-', 2, 'X', '-', 2] },
     { name: 'Garry', scores: ['-', '-', '-', 'X', 0] },
   ]
