@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   const beige = [
     { name: 'Conrad', scores: ['X', 2, '-', '-', 2] },
-    { name: 'Keegan', scores: [1, 'X', 1, '-', 2] },
+    { name: 'Keegan', scores: [1, 'X', 1, 3, 5] },
     { name: 'Marc', scores: ['-', 2, 'X', '-', 2] },
-    { name: 'Garry', scores: ['-', '-', '-', 'X', 0] },
+    { name: 'Garry', scores: ['-', 0, '-', 'X', 0] },
   ]
 
   // Dynamically generate each division's player head-to-head grid
