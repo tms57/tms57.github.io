@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const beigeStandings = document.getElementById('beige-standings')
 
   const blue_white = [
-    { name: 'Josh', scores: ['X', 2.5, 3, '-', '-', '-', 5.5] },
+    { name: 'Josh', scores: ['X', 2.5, 3, 1.5, '-', '-', 7] },
     { name: 'Micheal', scores: [0.5, 'X', '-', '-', '-', '-', 0.5] },
     { name: 'Trey', scores: [0, '-', 'X', 0, '-', '-', 0] },
-    { name: 'Cole', scores: ['-', '-', 3, 'X', '-', 3, 6] },
+    { name: 'Cole', scores: [1.5, '-', 3, 'X', '-', 3, 7.5] },
     { name: 'Chris', scores: ['-', '-', '-', '-', 'X', 3, 3] },
     { name: 'Dan', scores: ['-', '-', '-', 0, 0, 'X', 0] },
   ]
