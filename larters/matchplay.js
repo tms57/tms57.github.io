@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   const blue_white = [
     { name: 'Josh', scores: ['X', 2.5, 3, 1.5, '-', '-', 7] },
-    { name: 'Micheal', scores: [0.5, 'X', '-', '-', 1, '-', 1.5] },
+    { name: 'Micheal', scores: [0.5, 'X', '-', 0, 1, '-', 1.5] },
     { name: 'Trey', scores: [0, '-', 'X', 0, '-', '-', 0] },
-    { name: 'Cole', scores: [1.5, '-', 3, 'X', '-', 3, 7.5] },
+    { name: 'Cole', scores: [1.5, 3, 3, 'X', '-', 3, 10.5] },
     { name: 'Chris', scores: ['-', 2, '-', '-', 'X', 3, 5] },
     { name: 'Dan', scores: ['-', '-', '-', 0, 0, 'X', 0] },
   ]
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const eggshell = [
     { name: 'Aaron', scores: ['X', 3, 2, 3, '-', 8] },
     { name: 'Justin', scores: [0, 'X', '-', '-', 0.5, 0.5] },
-    { name: 'Francesco', scores: [1, '-', 'X', 0, '-', 1] },
+    { name: 'Francesco', scores: [1, '-', 'X', 0, 1, 2] },
     { name: 'Pierre', scores: [0, '-', 3, 'X', '-', 3] },
-    { name: 'Dan', scores: ['-', 2.5, '-', '-', 'X', 2.5] },
+    { name: 'Dan', scores: ['-', 2.5, 2, '-', 'X', 4.5] },
   ]
 
   const beige = [
