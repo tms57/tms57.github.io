@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
   ]
 
   const eggshell = [
-    { name: 'Aaron', scores: ['X', 2, 2, 3, '-', 7] },
+    { name: 'Aaron *', scores: ['X', 2, 2, 3, 3, 10] },
     { name: 'Justin', scores: [1, 'X', 3, 3, 0.5, 7.5] },
     { name: 'Francesco', scores: [1, 0, 'X', 0, 1, 2] },
     { name: 'Pierre', scores: [0, 0, 3, 'X', '-', 3] },
-    { name: 'Dan', scores: ['-', 2.5, 2, '-', 'X', 4.5] },
+    { name: 'Dan', scores: [0, 2.5, 2, '-', 'X', 4.5] },
   ]
 
   const beige = [
