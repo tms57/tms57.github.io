@@ -1,0 +1,132 @@
+/* :root {
+  --lightgrey: rgb(240, 240, 240);
+  --seafoam: #3bb176;
+  --grey: #848c8eff;
+  --blood-orange: #ba2d0bff;
+  --orange: #ffa630ff;
+  --black: #000501ff;
+} */
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/**
+ * Disable smooth scrolling when users have prefers-reduced-motion enabled
+ */
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  /*   width: 100%; */
+  text-align: center;
+  z-index: 5;
+  color: #fff;
+}
+
+header h2 {
+  margin: 0;
+  /* text-align: center; */
+  /* font-size: 1.5rem;
+  font-weight: bold; */
+  padding-top: 5px;
+  /* color: var(--seafoam); */
+  color: #fff;
+}
+
+.main {
+  background-color: #fff;
+  line-height: 1.5;
+}
+
+/* SideNav Mobile Stacked under header */
+
+.sidenav {
+  padding: 0.5rem;
+  /* moved to sub page css
+  background-color: var(--lightgrey);
+  */
+  text-align: center;
+}
+
+.sidenav ul {
+  padding-left: 0rem;
+  margin: 0.5rem 0;
+}
+
+.sidenav ul a {
+  padding: 0px 4px 2px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+section {
+  margin: 1rem 0;
+  scroll-margin-top: 0.75rem;
+  padding: 0 1rem;
+}
+
+ol {
+  /* margin-top: 1rem; */
+  padding-inline-start: 14px;
+}
+ol li {
+  margin-top: 1rem;
+}
+
+/* sideNav styles (Tablet & up)*/
+@media (min-width: 700px) {
+  header {
+    position: sticky;
+    top: 0;
+    min-height: 40px;
+  }
+
+  .sidenav {
+    position: sticky; /* Fixed Sidebar (stay in place on scroll) */
+    top: 37px; /* Stay at the top */
+    text-align: left;
+    z-index: 1; /* Stay on top */
+    grid-column: 1/2;
+    /* height: 100%; (sticky doesn't work with this) */
+    min-width: 150px;
+    min-height: 100vh;
+  }
+
+  .wrapper {
+    max-width: 900px;
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+  }
+
+  main {
+    padding: 1rem;
+    /* background-color: #fff; */
+    grid-column: 2/3;
+  }
+
+  section {
+    scroll-margin-top: 50px;
+    padding: 0;
+  }
+}

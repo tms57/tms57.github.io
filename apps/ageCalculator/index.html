@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+
+    <title>Age Calculator App</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Inter:wght@300;400;500;700&family=Poppins:ital,wght@0,700;1,400;1,800&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Age Calculator</h1>
+      <p>Enter your date of birth, then press Enter.</p>
+      <div class="inputs">
+        <div class="data">
+          <label for="day">DAY</label>
+          <input type="nunber" id="day" />
+        </div>
+        <div class="data">
+          <label for="month">MONTH</label>
+          <input type="nunber" id="month" />
+
+        </div>
+        <div class="data">
+          <label for="year">YEAR</label>
+          <input type="nunber" id="year" />
+        </div>
+      </div>
+      <p class="error-msg" id="month-error"></p>
+
+      <div class="divider">
+        <div class="rule"></div>
+        <div class="logo">
+          <!-- <img src="./assets/images/icon-arrow.svg" alt="icon-arrow" /> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-move-down"
+          >
+            <path d="M8 18L12 22L16 18" />
+            <path d="M12 2V22" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="results">
+        <div id="resultYears"></div>
+
+
+        <div id="resultMonths"></div>
+
+        <div id="resultDays"></div>
+
+
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Ted</a>.
+    </div>
+
+    <script src="script.js" type="module" defer></script>
+  </body>
+</html>

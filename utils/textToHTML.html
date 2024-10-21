@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text To HTML Paras</title>
+    <style>
+      .wrapper {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      #write {
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="input">
+        <h3>Copy Text Here</h3>
+        <textarea name="textIn" id="textIn" cols="60" rows="20"></textarea>
+      </div>
+      <button id="write">===></button>
+      <div class="input">
+        <h3>HTML Version</h3>
+        <textarea name="htmlOut" id="htmlOut" cols="60" rows="20"></textarea>
+      </div>
+    </div>
+    <script>
+      let writeBtn = document
+        .getElementById('write')
+        .addEventListener('click', () => {
+          writeHTML(document.getElementById('textIn').value)
+        })
+
+      // textIn.addEventListener('change', (e) => {
+      // })
+
+      function writeHTML(text) {
+        let html = ''
+        let paragraphs = text.split('\n\n')
+        for (i = 0; i < paragraphs.length; i++) {
+          paragraphs[i] = paragraphs[i].replaceAll('\n', ' ')
+          html += '<p>' + '\n' + paragraphs[i] + '\n' + '</p>' + '\n\n'
+          console.log(paragraphs[i])
+        }
+
+        document.getElementById('htmlOut').value = html
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="fraction.css" />
+    <title>Fraction Calculator</title>
+  </head>
+  <body>
+    <h1>Fraction Calculator</h1>
+    <div class="container">
+      <div class="fraction fraction1">
+        <input type="number" class="integer" />
+        <input type="number" class="numerator" />
+        <div class="fractionLine"></div>
+        <input type="number" class="denominator" />
+      </div>
+
+      <div class="operators">
+        <select name="operation" id="operation">
+          <option value="+">+</option>
+          <option value="-">&minus;</option>
+          <option value="*">&times;</option>
+          <option value="/">÷</option>
+        </select>
+      </div>
+
+      <div class="fraction fraction2">
+        <input type="number" class="integer" />
+        <input type="number" class="numerator" />
+        <div class="fractionLine"></div>
+        <input type="number" class="denominator" />
+      </div>
+    </div>
+
+    <div class="resultLine">
+      <button id="calc">=</button>
+      <div class="fraction" id="answer"></div>
+    </div>
+
+    <div class="instructions">
+      <h3>Instructions</h3>
+      <p>
+        To enter a fraction only just leave the integer box blank. You can enter
+        proper as well as improper fractions.
+      </p>
+      <p>To enter a whole number just leave the fraction boxes blank.</p>
+    </div>
+
+    <script src="./js/main.js" type="module" defer></script>
+  </body>
+</html>

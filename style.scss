@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  max-width: 468px;
+  height: 100vh;
+  background-color: #fff;
+
+  // header {
+  //   height: 100px;
+  //   display: flex;
+  //   justify-content: space-around;
+  //   align-items: center;
+  //   max-width: 100%;
+  //   background-color: #ad96cc;
+
+  //   .image {
+  //     width: 75px;
+  //     height: 75px;
+  //     border-radius: 50%;
+  //     border: 1px solid black;
+  //   }
+
+  //   .name {
+  //     font-weight: 700;
+  //     font-size: 1.5rem;
+  //   }
+  // }
+
+  nav {
+    flex: 1;
+    position: relative;
+    max-width: 468px;
+    // padding: 3rem 1rem;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    // hover state ????
+    // img:hover {
+    //   // width: 90px;
+    //   // height: 73px;
+    // }
+
+    a {
+      cursor: pointer;
+    }
+    .thought {
+      width: 85px;
+      height: 63px;
+    }
+
+    .head {
+      position: absolute;
+      top: 66%;
+      left: 60%;
+      width: 118px;
+      height: 133px;
+    }
+
+    .aboutLink {
+      position: absolute;
+      top: 31%;
+      left: 6%;
+
+      .aboutDesc {
+        position: absolute;
+        top: 23px;
+        left: 21px;
+        color: #1a8fe3ff;
+        z-index: 2;
+      }
+    }
+
+    .webDevLink {
+      position: absolute;
+      top: 15%;
+      left: 17%;
+
+      .webDevDesc {
+        position: absolute;
+        top: 23px;
+        left: 12px;
+        color: orange;
+        z-index: 2;
+      }
+    }
+
+    .projectsLink {
+      position: absolute;
+      top: 2%;
+      left: 33%;
+
+      .projectsDesc {
+        position: absolute;
+        top: 23px;
+        left: 15px;
+        color: purple;
+        z-index: 2;
+      }
+    }
+
+    .golfLink {
+      position: absolute;
+      top: 31%;
+      left: 35%;
+
+      .golfDesc {
+        position: absolute;
+        top: 23px;
+        left: 28px;
+        color: green;
+        z-index: 2;
+      }
+    }
+
+    .blog {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+
+      .blogDesc {
+        position: absolute;
+        top: 23px;
+        left: 28px;
+        color: #ba2d0bff;
+        z-index: 2;
+      }
+    }
+
+    .appsLink {
+      position: absolute;
+      top: 31%;
+      left: 64%;
+
+      .appsDesc {
+        position: absolute;
+        top: 23px;
+        left: 28px;
+        color: green;
+        z-index: 2;
+      }
+    }
+  }
+
+  .blankThought {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .bubbles {
+    width: 30%;
+    height: 20%;
+    position: absolute;
+
+    top: 45%;
+    left: 51%;
+
+    .bubble {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 1px solid black;
+      border-radius: 50%;
+    }
+
+    .bubble1 {
+      bottom: 12%;
+      right: 26%;
+      width: 15px;
+      height: 15px;
+    }
+    .bubble2 {
+      bottom: 32%;
+      right: 32%;
+      width: 25px;
+      height: 25px;
+    }
+    .bubble3 {
+      bottom: 60%;
+      right: 44%;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .desc {
+    position: absolute;
+    bottom: 19%;
+    left: 10%;
+    width: 150px;
+    height: 40px;
+  }
+}
+//   nav {
+//     margin: 0 auto;
+//     max-width: 468px;
+//     padding: 3rem 1rem;
+
+//     display: grid;
+//     grid-template-columns: repeat(5, 1fr);
+//     grid-template-rows: repeat(5, 1fr);
+
+//     & .link {
+//       width: 95px;
+//       height: 95px;
+//       border: 1px solid blue;
+//       border-radius: 50%;
+//     }
+
+//     .arrowTopLeft {
+//       grid-column: 2 / 3;
+//       grid-row: 2 / 3;
+//     }
+
+//     .aboutLink {
+//       grid-column: 1 / 2;
+//       grid-row: 1 /2;
+//     }
+
+//     .projectsLink {
+//       grid-column: 5 / 6;
+//       grid-row: 1 /2;
+//     }
+
+//     .hub {
+//       grid-column: 3 / 4;
+//       grid-row: 3 / 4;
+//     }
+
+//     .jsLink {
+//       grid-column: 1 / 2;
+//       grid-row: 5 / 6;
+//     }
+
+//     .golfLink {
+//       grid-column: 5 / 6;
+//       grid-row: 5 / 6;
+//     }
+//   }

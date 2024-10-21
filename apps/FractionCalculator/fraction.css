@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  align-items: center;
+  width: 260px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem;
+}
+.fraction {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30px 4px 30px;
+}
+/* .fraction1 {
+  align-self: flex-start;
+}
+.fraction1 {
+  align-self: flex-end;
+} */
+
+/* inputs */
+input {
+  width: 40px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+/* remove number arrows from inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* remove number arrows from inputs */
+.integer {
+  grid-column: 1/2;
+  grid-row: 1/4;
+  margin-right: 2px;
+}
+.numerator {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.denominator {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+
+.fractionLine {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  width: 90%;
+  height: 2px;
+  background-color: red;
+
+  align-self: center;
+}
+
+.operators {
+  /* max-width: 60px; */
+}
+#operation {
+  font-size: 1.5rem;
+  width: 80px;
+}
+
+/* option:hover {
+  background-color: rgb(101, 232, 136);
+} */
+
+.resultLine {
+  display: flex;
+  align-items: center;
+
+  margin: 1rem auto;
+  width: 230px;
+}
+button {
+  width: 35px;
+  height: 25px;
+  border-radius: 4px;
+  background-color: #7eb27e;
+  color: #fff;
+  border: none;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #609460;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
+
+#answer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 15px 4px 15px;
+  margin-left: 0.75rem;
+  font-size: 1.5rem;
+}
+
+#ansInteger {
+  grid-column: 1/2;
+  grid-row: 1/4;
+  margin-right: 4px;
+}
+#ansNumerator {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  font-size: 1rem;
+}
+#ansDenominator {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  font-size: 1rem;
+}
+
+.centerXY {
+  display: grid;
+  place-content: center;
+}
+
+.instructions {
+  padding: 1rem;
+}
+.instructions h3 {
+  margin-bottom: 1rem;
+}
+.instructions p {
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,32 @@
+.card {
+  display: block;
+  width: 200px;
+  min-width: 200px;
+  margin-bottom: 0.75rem;
+  background-color: #fff;
+  border: 1px solid orange;
+  border-radius: 0.25rem;
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bold;
+
+  background-color: orange;
+  color: #fff;
+}
+
+.card img {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  padding: 0.5rem;
+}
+
+.desc {
+  border-top: solid;
+  border-top-width: 1px;
+  border-top-color: orange;
+  padding: 0.5rem;
+}
