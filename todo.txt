@@ -1,2 +1,7 @@
 ✔ move figcaption css OUT of twoColumns.css AND into separate blog or cancer css file
 ✔ add: line-height: 1.5; to twoColumns.css (for global consistency)
+
+larters matchplay page
+better header color
+better beige division color
+fix margin

@@ -1,0 +1,258 @@
+
+*** css for grid (not using for now)
+.blue_white_grid {
+  display: grid;
+  grid-template-rows: repeat(8, 20px);
+  grid-template-columns: repeat(8, 20px);
+  grid-gap: 1px;
+  background-color: #fff; /* Background color */
+}
+
+.blue_white_grid > div {
+  background-color: #ddd; /* Grid item color */
+  border: 1px solid #000; /* Border color */
+  width: 20px;
+  height: 20px;
+}
+
+I have the following players in a golf match play league:
+Player 1, Player 2, Player 3, Player 4, Player 5, Player 6
+
+Please set up a schedule where each player plays a new opponent each week for five weeks AND each player plays each other player once.
+
+Blue-White Division
+
+Week 1:
+
+Match 1: Josh B vs Micheal T
+Match 2: Trey S vs Cole D
+Match 3: Chris C vs Dan R
+Week 2:
+
+Match 1: Josh B vs Trey S
+Match 2: Micheal T vs Chris C
+Match 3: Cole D vs Dan R
+Week 3:
+
+Match 1: Josh B vs Cole D
+Match 2: Micheal T vs Dan R
+Match 3: Trey S vs Chris C
+Week 4:
+
+Match 1: Josh B vs Chris C
+Match 2: Micheal T vs Cole D
+Match 3: Trey S vs Dan R
+Week 5:
+
+Match 1: Josh B vs Dan R
+Match 2: Micheal T vs Trey S
+Match 3: Cole D vs Chris C
+
+Eggshell and Beige Divisions:
+
+Week 1:
+
+Match 1: Player 1 vs Player 2
+Match 2: Player 3 vs Player 4
+Player 5 has a bye
+
+Week 2:
+
+Match 1: Player 1 vs Player 3
+Match 2: Player 2 vs Player 5
+Player 4 has a bye
+
+Week 3:
+
+Match 1: Player 1 vs Player 4
+Match 2: Player 3 vs Player 5
+Player 2 has a bye
+
+Week 4:
+
+Match 1: Player 1 vs Player 5
+Match 2: Player 2 vs Player 4
+Player 3 has a bye
+
+Week 5:
+
+Match 1: Player 2 vs Player 3
+Match 2: Player 4 vs Player 5
+
+Player 1 has a bye
+
+****
+Week 1:
+
+Match 1: Josh B vs Micheal T
+Match 2: Trey S vs Cole D
+Match 3: Chris C vs Dan R
+Week 2:
+
+Match 1: Josh B vs Trey S
+Match 2: Micheal T vs Chris C
+Match 3: Cole D vs Dan R
+Week 3:
+
+Match 1: Josh B vs Cole D
+Match 2: Micheal T vs Dan R
+Match 3: Trey S vs Chris C
+Week 4:
+
+Match 1: Josh B vs Chris C
+Match 2: Micheal T vs Cole D
+Match 3: Trey S vs Dan R
+Week 5:
+
+Match 1: Josh B vs Dan R
+Match 2: Micheal T vs Trey S
+Match 3: Cole D vs Chris C
+
+
+Mixed array code (saved)
+
+function createArray(clipboardData) {
+  let playerArr = []
+
+  // get each player (name plus scores)
+  let playerStringsArray = clipboardData.split('\r\n')
+
+  // for each player create an array containing a name (element 0) and scores
+  for (i = 0; i < playerStringsArray.length; i++) {
+    playerArr.push(playerStringsArray[i].split('\t'))
+  }
+
+  // for each player, make points elements (if not an 'X') numeric
+  for (p = 0; p < playerArr.length; p++) {
+    for (element = 1; element < playerArr[p].length; element++) {
+      // skip player name (element 0)
+      if (playerArr[p][element] !== 'X') {
+        // convert strings for points to numeric
+        playerArr[p][element] = playerArr[p][element] * 1
+      }
+    }
+  }
+  console.log(playerArr)
+  return playerArr
+}
+
+function generateArrayCode(array) {
+  let jsArrayCode = 'let playerArr = '
+
+  for (let player = 0; player < array.length; player++) {
+    // first item is name
+    jsArrayCode += "['" + array[player][0] + "',"
+    for (let item = 1; item < array[player].length; item++) {
+      jsArrayCode += ' ' + array[player][item]
+      if (item < array[player].length - 1) {
+        jsArrayCode += ','
+      } else {
+        // last item for player
+        if (player < array.length - 1) {
+          jsArrayCode += '],\n'
+        }
+      }
+    }
+  }
+  console.log(jsArrayCode)
+}
+
+/* Format:
+  [
+    ["Player1", X, 20, 30, 40, 50, 60],
+    ["Player2", 15, X, 35, 45, 55, 65],
+    ["Player3", 20, 30, X, 50, 60, 70],
+    ["Player4", 25, 35, 45, X, 65, 75],
+    ["Player5", 30, 40, 50, 60, X, 80],
+    ["Player6", 35, 45, 55, 65, 75, X]
+  ]
+
+
+  Format looks like:
+  let players = [
+      {name: "Player1", scores: [10, 20, 30, 40, 50, 60]},
+      {name: "Player2", scores: [15, 25, 35, 45, 55, 65]},
+      {name: "Player3", scores: [20, 30, 40, 50, 60, 70]},
+      {name: "Player4", scores: [25, 35, 45, 55, 65, 75]},
+      {name: "Player5", scores: [30, 40, 50, 60, 70, 80]},
+      {name: "Player6", scores: [35, 45, 55, 65, 75, 85]}
+    ];
+        */
+*/
+
+[
+{name: "Josh",scores: [ X, 2, 1.5, 2.5, 1.5, 1, 8.5]},
+{name: "Micheal",scores: [ 1, X, 2, 0, 3, 1.5, 7.5]},
+{name: "Trey",scores: [ 1.5, 1, X, 2, 3, 1, 8.5]},
+{name: "Cole",scores: [ 0.5, 3, 2.5, X, 2, 1.5, 9.5]},
+{name: "Chris",scores: [ 1.5, 1, 2, 3, X, 1, 8.5]},
+{name: "Dan",scores: [ 2, 3, 2, 1, 3, X, 11]}
+]
+
+*** player-grid HTML
+            <span class="label">Player</span>
+            <span class="label">Josh</span>
+            <span class="label">Micheal</span>
+            <span class="label">Trey</span>
+            <span class="label">Cole</span>
+            <span class="label">Chris</span>
+            <span class="label">Dan</span>
+            <span class="label">Total</span>
+
+            <span class="label">Josh</span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Micheal</span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Trey</span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Cole</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Chris</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span></span>
+            <span>0</span>
+
+            <span class="label side">Dan</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>X</span>
+            <span>0</span>
+***
+
+SH-AP-ET-M431LR
+IwbiFF57 Email p

@@ -1,3 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --lightgrey: rgb(240, 240, 240);
+  --seafoam: #3bb176;
+  --grey: #848c8eff;
+  --blood-orange: #ba2d0bff;
+  --orange: #ffa630ff;
+  --black: #000501ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  line-height: 1.7em;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 468px;
+  height: 100vh;
+  background-color: #fff;
+}
+.main nav {
+  flex: 1;
+  position: relative;
+  max-width: 468px;
+}
+.main nav img {
+  width: 100%;
+  height: auto;
+}
+.main nav a {
+  cursor: pointer;
+}
+.main nav .thought {
+  width: 85px;
+  height: 63px;
+}
+.main nav .head {
+  position: absolute;
+  top: 66%;
+  left: 60%;
+  width: 118px;
+  height: 133px;
+}
+.main nav .aboutLink {
+  position: absolute;
+  top: 30%;
+  left: 6%;
+}
+.main nav .aboutLink .aboutDesc {
+  position: absolute;
+  top: 19px;
+  left: 21px;
+  color: #1a8fe3;
+  z-index: 2;
+}
+.main nav .webDevLink {
+  position: absolute;
+  top: 15%;
+  left: 17%;
+}
+.main nav .webDevLink .webDevDesc {
+  position: absolute;
+  top: 19px;
+  left: 12px;
+  color: orange;
+  z-index: 2;
+}
+.main nav .writingLink {
+  position: absolute;
+  top: 2%;
+  left: 33%;
+}
+.main nav .writingLink .writingDesc {
+  position: absolute;
+  top: 19px;
+  left: 19px;
+  color: purple;
+  z-index: 2;
+}
+
+/* .main nav .projectsLink {
+  position: absolute;
+  top: 2%;
+  left: 33%;
+}
+.main nav .projectsLink .projectsDesc {
+  position: absolute;
+  top: 19px;
+  left: 15px;
+  color: purple;
+  z-index: 2;
+} */
+.main nav .golfLink {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+}
+.main nav .golfLink .golfDesc {
+  position: absolute;
+  top: 19px;
+  left: 28px;
+  color: green;
+  z-index: 2;
+}
+.main nav .blog {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+}
+.main nav .blog .blogDesc {
+  position: absolute;
+  top: 19px;
+  left: 28px;
+  color: #ba2d0b;
+  z-index: 2;
+}
+.main nav .appsLink {
+  position: absolute;
+  top: 30%;
+  left: 64%;
+}
+.main nav .appsLink .appsDesc {
+  position: absolute;
+  top: 19px;
+  left: 28px;
+  color: orange;
+  z-index: 2;
+}
+.main .blankThought {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.main .bubbles {
+  width: 30%;
+  height: 20%;
+  position: absolute;
+  top: 45%;
+  left: 51%;
+}
+.main .bubbles .bubble {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.main .bubbles .bubble1 {
+  bottom: 12%;
+  right: 26%;
+  width: 15px;
+  height: 15px;
+}
+.main .bubbles .bubble2 {
+  bottom: 32%;
+  right: 32%;
+  width: 25px;
+  height: 25px;
+}
+.main .bubbles .bubble3 {
+  bottom: 60%;
+  right: 44%;
+  width: 35px;
+  height: 35px;
+}
+.main .desc {
+  position: absolute;
+  bottom: 19%;
+  left: 10%;
+  width: 150px;
+  height: 40px;
+} /*# sourceMappingURL=style.css.map */
+
 :root {
   --lightgrey: rgb(240, 240, 240);
   --seafoam: #3bb176;
@@ -108,6 +294,18 @@ body {
   position: absolute;
   top: 19px;
   left: 28px;
+  color: green;
+  z-index: 2;
+}
+.main nav .lartersLink {
+  position: absolute;
+  top: 45%;
+  left: 6%;
+}
+.main nav .lartersLink .lartersDesc {
+  position: absolute;
+  top: 19px;
+  left: 19px;
   color: green;
   z-index: 2;
 }

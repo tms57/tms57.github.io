@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Array</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      margin: 1rem;
+      text-align: center;
+    }
+
+    .wrapper {
+      display: flex;
+      max-width: 700px;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .left,
+    .right {
+      width: 40%;
+    }
+    img {
+      width: 100%;
+    }
+    .instructions h3 {
+      margin: 1rem 0;
+    }
+    .instructions ol {
+      padding-inline-start: 1rem;
+    }
+    .instructions li {
+      margin-bottom: 0.3rem;
+    }
+
+    button {
+      width: 80px;
+      height: 65px;
+      border-radius: 5px;
+      padding: 7px 8px;
+      color: #fff;
+      background-color: #68ba68;
+      align-self: center;
+    }
+
+    .right textarea {
+      margin-top: 0.35rem;
+    }
+  </style>
+  <body>
+    <h2>Matchplay Grid to Objects</h2>
+    <div class="wrapper">
+      <div class="left">
+        <img
+          src="../larters/img/gridHighlight2.jpg"
+          alt="grid sheet highlighted"
+        />
+        <article class="instructions">
+          <h3>How to use this app.</h3>
+          <ol>
+            <li>
+              In your Google sheet hightlight the entire player grid EXCEPT the
+              top row (that starts with "Player").
+            </li>
+            <li>Copy the highlighted area.</li>
+            <li>Click the green button.</li>
+            <li>
+              The code is copied to the clipboard as well as the textarea to the
+              right.
+            </li>
+            <li>Now go to VS Code and paste it!</li>
+          </ol>
+        </article>
+      </div>
+
+      <button id="makeArray">Generate Player Array</button>
+
+      <div class="right">
+        <label for="arrayCode">Player Array Code:</label>
+        <textarea
+          name="arrayCode"
+          id="arrayCode"
+          rows="20"
+          cols="50"
+        ></textarea>
+      </div>
+    </div>
+    <script>
+      /*
+      This utility takes google sheets clipboard data for players
+      and writes a javaScript oject array for use in the matchplay website's
+      script.js file.
+      DON'T include the "Player" row.
+      */
+
+      let clipboardData = ''
+      let dataBtn = document.getElementById('makeArray')
+
+      dataBtn.addEventListener('click', (e) => {
+        navigator.clipboard
+          .readText()
+          .then((text) => {
+            let clipboardData = text
+            if (clipboardData != '') {
+              // console.log(createArray(clipboardData))
+              console.log(generateObjectArrayCode(createArray(clipboardData)))
+            } else {
+              console.log('No data in clipboard')
+            }
+          })
+          .catch((err) => {
+            console.error('Failed to read clipboard contents: ', err)
+          })
+      })
+
+      function createArray(clipboardData) {
+        // First create an array from clipboard data with names, scores, and X's
+        /* Format:
+          [
+            ["Player1", X, 20, 30, 40, 50, 60],
+            ["Player2", 15, X, 35, 45, 55, 65],
+            ["Player3", 20, 30, X, 50, 60, 70],
+            ["Player4", 25, 35, 45, X, 65, 75],
+            ["Player5", 30, 40, 50, 60, X, 80],
+            ["Player6", 35, 45, 55, 65, 75, X]
+          ]
+        */
+
+        let playerArr = []
+
+        // get each player (name plus scores)
+        let playerStringsArray = clipboardData.split('\r\n')
+
+        // for each player create an array containing a name (element 0) and scores
+        for (i = 0; i < playerStringsArray.length; i++) {
+          playerArr.push(playerStringsArray[i].split('\t'))
+        }
+        // this is a workaround - filter doesn't work with nested arrays!
+        // remove X's from array
+        /*
+        playerArr = playerArr.map((player) =>
+          player.filter((item) => item !== 'X')
+        )
+        */
+
+        // for each player keep X's or dashes (not played yet)
+        for (p = 0; p < playerArr.length; p++) {
+          for (element = 1; element < playerArr[p].length; element++) {
+            // skip player name (element 0)
+            if (playerArr[p][element] != 'X' && playerArr[p][element] != '-') {
+              playerArr[p][element] = playerArr[p][element] * 1
+            }
+          }
+        }
+        return playerArr
+      }
+
+      function generateObjectArrayCode(array) {
+        let jsArrayCode = '[\n'
+
+        for (let player = 0; player < array.length; player++) {
+          // first item is name
+          jsArrayCode += '{name: ' + '"' + array[player][0] + '", '
+          jsArrayCode += 'scores: ['
+          for (let item = 1; item < array[player].length; item++) {
+            // write X as 'X'
+            if (array[player][item] === 'X' || array[player][item] === '-') {
+              jsArrayCode += "'" + array[player][item] + "'"
+            } else {
+              jsArrayCode += ' ' + array[player][item]
+            }
+            if (item < array[player].length - 1) {
+              jsArrayCode += ','
+            } else {
+              // last item for player
+
+              if (player < array.length - 1) {
+                jsArrayCode += ']},\n'
+              } else {
+                jsArrayCode += ']}\n'
+              }
+            }
+          }
+        }
+        jsArrayCode += ']'
+
+        // display jsArrayCode in the textarea
+        document.getElementById('arrayCode').innerText = jsArrayCode
+
+        // write jsArrayCode to the clipboard
+        navigator.clipboard
+          .writeText(jsArrayCode)
+          .then(() => {
+            console.log('Data successfully copied to clipboard!')
+          })
+          .catch((err) => {
+            console.error('Failed to copy data to clipboard: ', err)
+          })
+      }
+    </script>
+  </body>
+</html>
