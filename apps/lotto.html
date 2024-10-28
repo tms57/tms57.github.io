@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Capture Image and Extract Text</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+  </head>
+  <body>
+    <h1>Capture Image and Extract Text</h1>
+    <video id="video" width="320" height="240" autoplay></video>
+    <button id="snap">Snap Photo</button>
+    <canvas id="canvas" width="320" height="240" style="display: none"></canvas>
+    <div id="photoText"></div>
+
+    <script>
+      let scanText = ''
+
+      // Access the camera
+      navigator.mediaDevices
+        .getUserMedia({
+          video: {
+            width: { ideal: 1280 },
+            height: { ideal: 720 },
+            facingMode: 'environment',
+          },
+        })
+        .then(function (stream) {
+          var video = document.getElementById('video')
+          video.srcObject = stream
+          video.play()
+        })
+        .catch(function (err) {
+          console.log('An error occurred: ' + err)
+        })
+
+      // Capture the image and process it with Tesseract
+      document.getElementById('snap').addEventListener('click', function () {
+        var canvas = document.getElementById('canvas')
+        var context = canvas.getContext('2d')
+        var video = document.getElementById('video')
+        context.drawImage(video, 0, 0, 320, 240)
+
+        // Convert the canvas image to a data URL
+        var dataURL = canvas.toDataURL('image/png')
+
+        // Process the image with Tesseract
+        Tesseract.recognize(dataURL, 'eng', {
+          logger: function (m) {
+            console.log(m)
+          },
+        })
+          .then(function (result) {
+            // document.getElementById('photoText').innerText = result.data.text
+            scanText = result.data.text
+            console.log(scanText)
+            document.getElementById('photoText').innerText = scanText
+          })
+          .catch(function (err) {
+            console.error(err)
+          })
+      })
+    </script>
+  </body>
+</html>
