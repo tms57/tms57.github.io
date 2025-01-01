@@ -42,7 +42,7 @@ export class Fraction {
   }
 
   improperToMixed() {
-    // let { numerator, denominator } = improperFraction
+    // BUG fixed in FractionCalulator - negative sign weren't showing
     let mixedFrac = new Fraction(0, 0, 0) // mixedFrac (mixed fraction)
 
     if (this.numerator < 0) {

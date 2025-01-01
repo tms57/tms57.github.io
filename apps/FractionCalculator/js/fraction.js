@@ -42,8 +42,15 @@ export class Fraction {
   }
 
   improperToMixed() {
-    // let { numerator, denominator } = improperFraction
     let mixedFrac = new Fraction(0, 0, 0) // mixedFrac (mixed fraction)
+    let negative = null
+
+    if (this.numerator < 0) {
+      negative = true
+      this.numerator *= -1
+    } else {
+      negative = false
+    }
 
     if (this.numerator < 0) {
       mixedFrac.integer = Math.ceil(this.numerator / this.denominator)
@@ -51,6 +58,15 @@ export class Fraction {
     } else {
       mixedFrac.integer = Math.floor(this.numerator / this.denominator)
       mixedFrac.numerator = this.numerator % this.denominator
+    }
+
+    // if fraction was negative put sign in the right place
+    if (negative) {
+      if (mixedFrac.integer !== 0) {
+        mixedFrac.integer *= -1
+      } else {
+        mixedFrac.numerator *= -1
+      }
     }
 
     mixedFrac.denominator = this.denominator
