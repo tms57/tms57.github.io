@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Reminder</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="navBtn notes">Notes</div>
+      <div class="navBtn reminders">Reminders</div>
+      <div class="navBtn todos">Todos</div>
+    </header>
+    <main>
+      <div class="todos-container">
+        <!-- <div class="todo">
+          <div class="type">T</div>
+          <div class="desc">Take out garbage and set longer todo item!</div>
+          <div class="actions">
+            <button class="action delete">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+            <button class="action edit">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </div>
+        </div> -->
+      </div>
+      <form class="addForm">
+        <div class="inputElement">
+          <label for="desc">Description</label>
+          <input
+            type="text"
+            name="desc"
+            id="desc"
+            placeholder="Add a reminder description"
+          />
+        </div>
+
+        <div class="inputElement">
+          <label for="date">Due Date (Optional)</label>
+          <input
+            type="date"
+            name="todoDate"
+            id="todoDate"
+            placeholder="Add a reminder date"
+          />
+        </div>
+
+        <div class="addFormBtns">
+          <button id="cancel">Cancel</button>
+          <button id="addTodo">Add Todo</button>
+        </div>
+      </form>
+      <button class="addBtn">Add</button>
+    </main>
+    <!-- <script type="module" src="/main.js"></script> -->
+  </body>
+</html>
