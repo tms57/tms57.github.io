@@ -42,8 +42,34 @@ ul {
   margin: 0;
 }
 
+section p {
+  margin-top: 1rem;
+}
+
 #gen-news p {
   margin-top: 1rem;
+}
+#scoring p {
+  margin-top: 0rem;
+}
+
+.scoring-example {
+  margin-top: 1rem;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 60px repeat(9, 40px) 50px;
+  text-align: center;
+}
+
+.scoring-example .label {
+  /* width: 80px; */
+  text-align: left;
+}
+.scoring-example span {
+  border: 1px solid grey;
+}
+.hole-won {
+  background-color: lightgreen;
 }
 
 #blue-white .week {
