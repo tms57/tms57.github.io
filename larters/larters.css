@@ -72,6 +72,11 @@ section p {
   background-color: lightgreen;
 }
 
+/* FAQ section */
+.faq-answer {
+  margin: 0.3rem 0 0.9rem 0;
+}
+
 #blue-white .week {
   background-color: rgb(207, 226, 243);
 }
