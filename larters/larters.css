@@ -46,7 +46,7 @@ section p {
   margin-top: 1rem;
 }
 
-/* TEMP Register section in red */
+/* TEMP Register section in red  */
 #register > p {
   color: red;
 }
