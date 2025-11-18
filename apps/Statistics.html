@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      textarea {
+        width: 60%;
+        height: 10rem;
+      }
+      .userInput {
+        display: flex;
+      }
+      button {
+        width: 80px;
+        height: 40px;
+        margin-left: 0.75rem;
+        color: white;
+        background-color: #79b079;
+        border: none;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Statistics</h1>
+
+    <h3>Instructions</h3>
+    <p>Enter your data seperated by single spaces OR paste in your data.</p>
+    <p>Data can be formatted like any of these examples.</p>
+    <ul>
+      <li>5 13 9 7 1 9 2 9 11 (separated by one space)</li>
+      <li>5,3,9,7,1,9,2,9,11 (separated by one comma)</li>
+      <li>5, 3, 9, 7, 1, 9, 2, 9, 11 (separated by a comma and a space)</li>
+      <li>Data copied from a single spreadsheet row</li>
+      <li>Data copied from a single spreadsheet column</li>
+    </ul>
+
+    <form>
+      <label for="data">Enter or paste data:</label>
+      <div class="userInput">
+        <textarea name="data" id="data" rows="15" cols="100"></textarea>
+        <button type="button" id="calc">Calculate Statistics</button>
+      </div>
+    </form>
+
+    <p id="displayStats"></p>
+    <script>
+      let data = []
+      let dataInput = document.getElementById('data')
+      let calcBtn = document.getElementById('calc')
+      calcBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        data = getData(dataInput.value)
+
+        let sum = 0
+        let stats = {
+          min: null,
+
+          mean: null,
+          median: null,
+          mode: null,
+          variance: null,
+          stdDev: null,
+        }
+
+        // get mean
+        data.forEach((n) => {
+          sum += n
+        })
+        stats.mean = sum / data.length
+
+        // get median
+        // must sort array first
+        data.sort((a, b) => a - b)
+
+        // min & max (data is sorted now)
+        stats.min = data[0]
+        stats.max = data[data.length - 1]
+
+        // let meanElement = array.length / 2
+        if (data.length % 2 === 0) {
+          // n is even -> there is no middle element
+          stats.median = (data[data.length / 2] + data[data.length / 2 - 1]) / 2
+        } else {
+          stats.median = data[Math.floor(data.length / 2)]
+        }
+
+        // get mode
+        const frequency = {}
+
+        data.forEach((value) => {
+          frequency[value] = (frequency[value] || 0) + 1
+        })
+
+        // determine # of modes
+        let maxCount = 0
+        const modes = []
+
+        for (const key in frequency) {
+          if (frequency[key] > maxCount) {
+            maxCount = frequency[key]
+            modes.length = 0 // Clear the modes array
+            modes.push(Number(key))
+          } else if (frequency[key] === maxCount) {
+            modes.push(Number(key))
+          }
+        }
+        // **** if every value appears the same number of times, there is no mode
+
+        if (modes.length === Object.keys(frequency).length) {
+          modes.length = 0 // Clear the modes array
+          modes.push('No mode: all values appear equally')
+        }
+        stats.mode = modes
+
+        // standard deviation ex 19 16 21 20 19 35 42 20 25 19 18
+        let sumOfDiffsSquared = 0
+        data.forEach((x) => {
+          sumOfDiffsSquared += (x - stats.mean) ** 2
+        })
+        stats.variance = sumOfDiffsSquared / (data.length - 1)
+        stats.stdDev = Math.sqrt(stats.variance)
+
+        displayResults(stats)
+      })
+
+      function getData(input) {
+        input = input.trim()
+        // determine delimiters
+
+        // check for commas
+        if (input.indexOf(',') !== -1 || input.indexOf(', ') !== -1) {
+          input = input.replace(/,\s*/g, ' ')
+        }
+
+        // check for tabs (from spreadsheets)
+        if (input.indexOf('\t') !== -1) {
+          input = input.replace(/\t/g, ' ')
+        } else if (input.indexOf('\n') !== -1) {
+          // check for new lines
+          input = input.replace(/\n/g, ' ')
+        }
+
+        // split input string into array
+        const dataArray = input.split(' ')
+        // convert strings to numbers
+        const numberArray = dataArray.map((item) => Number(item))
+
+        return numberArray
+      }
+
+      function displayResults(stats) {
+        let displayStats = document.getElementById('displayStats')
+        let html = `
+        Min: ${stats.min}<br>
+        Max: ${stats.max}<br>
+        Mean: ${stats.mean.toFixed(4)}<br>
+        Median: ${stats.median}<br>
+        Mode: ${stats.mode.join(', ')}<br>
+        variance: ${stats.variance.toFixed(4)}<br>
+        standard deviation: ${stats.stdDev.toFixed(4)}<br>
+        `
+        displayStats.innerHTML = html
+      }
+    </script>
+  </body>
+</html>
