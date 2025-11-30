@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quadratic Solver</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .main-content {
+        flex: 1;
+        min-width: 350px;
+      }
+
+      .graph-container {
+        flex: 0 0 auto;
+      }
+
+      #graphCanvas {
+        border: 1px solid #ccc;
+        /* margin-top: 20px; */
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+        min-width: 350px;
+      }
+
+      @media (max-width: 1200px) {
+        body {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .graph-container {
+          flex: 1;
+          width: 100%;
+          display: flex;
+          justify-content: left;
+        }
+
+        #graphCanvas {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        align-items: center;
+      }
+
+      /* Remove spinners on Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Remove spinners on Firefox Irijan2015*/
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+
+      input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 70px;
+        min-width: 50px;
+        height: 1.4rem;
+        font-size: 1.1rem;
+        padding: 8px 1px 0 0;
+        text-align: right;
+        flex-shrink: 1;
+      }
+      span {
+        margin: 0 0.3rem 0 0.3rem;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+      var {
+        /* font-style: normal; */
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+      .adjust {
+        margin-top: 5px;
+      }
+      button {
+        width: 80px;
+        height: 40px;
+        margin-left: 0.75rem;
+        color: white;
+        background-color: #79b079;
+        border: none;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 600px) {
+        .main-content {
+          min-width: 350px;
+        }
+
+        form {
+          flex-wrap: wrap;
+        }
+
+        button {
+          margin-left: 0;
+          margin-top: 0.5rem;
+          width: 95%;
+          max-width: 350px;
+          order: 100;
+        }
+
+        input {
+          width: 60px;
+          min-width: 50px;
+        }
+      }
+
+      #displaySolution {
+        line-height: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-content">
+      <h1>Quadratic Solver</h1>
+
+      <h3>Instructions</h3>
+      <p>A quadratic formula can be expressed as:</p>
+      <p>
+        <var>ax<sup>2</sup></var> + <var>bx</var> + <var>c</var> = 0.
+      </p>
+      <p>
+        Enter your values for a, b, and c below and click the calculate button.
+      </p>
+
+      <form>
+        <input type="number" name="a" id="a" placeholder="a" />
+        <var>x<sup>2</sup></var>
+        <span>+</span>
+
+        <input type="number" name="b" id="b" placeholder="b" />
+        <var class="adjust">x</var>
+        <span class="adjust">+</span>
+
+        <input type="number" name="c" id="c" placeholder="c" />
+        <span class="adjust">=</span>
+        <span class="adjust">0</span>
+        <button type="button" id="calc">Calculate</button>
+      </form>
+
+      <p id="displaySolution"></p>
+    </div>
+
+    <div class="graph-container">
+      <canvas id="graphCanvas" width="600" height="600"></canvas>
+    </div>
+
+    <script>
+      const canvas = document.getElementById('graphCanvas')
+      const ctx = canvas.getContext('2d')
+      const padding = 50
+      const graphWidth = canvas.width - 2 * padding
+      const graphHeight = canvas.height - 2 * padding
+
+      function plotGraph(a, b, c) {
+        // Clear canvas
+        ctx.fillStyle = 'white'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+        // Draw title centered at top
+        ctx.fillStyle = 'black'
+        ctx.font = 'bold 16px Arial'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'top'
+        const functionTitle = `f(x) = ${a === 1 ? '' : a}x² + ${b}x + ${c}`
+        ctx.fillText(functionTitle, canvas.width / 2, 10)
+        const discriminant = b * b - 4 * a * c
+        const vertexX = -b / (2 * a)
+        const vertexY = c - (b * b) / (4 * a)
+
+        // Determine roots
+        let roots = []
+        if (discriminant >= 0) {
+          const root1 = (-b + Math.sqrt(discriminant)) / (2 * a)
+          const root2 = (-b - Math.sqrt(discriminant)) / (2 * a)
+          roots = [Math.min(root1, root2), Math.max(root1, root2)]
+        }
+
+        // Determine domain (x-axis range)
+        let minX, maxX
+        if (roots.length === 2) {
+          // Two roots: center the roots horizontally with padding on both sides
+          const rootMidpoint = (roots[0] + roots[1]) / 2
+          const rootSpan = roots[1] - roots[0]
+          const padding_x = Math.max(rootSpan * 0.5, rootSpan * 0.3)
+          minX = rootMidpoint - (rootSpan / 2 + padding_x)
+          maxX = rootMidpoint + (rootSpan / 2 + padding_x)
+        } else if (roots.length === 1) {
+          // One root: center it horizontally with equal padding on both sides
+          const padding_x = Math.max(Math.abs(roots[0]) * 0.8, 8)
+          minX = roots[0] - padding_x
+          maxX = roots[0] + padding_x
+        } else {
+          // No real roots: center around vertex
+          const range = Math.max(Math.abs(vertexX) * 2, 10)
+          minX = vertexX - range
+          maxX = vertexX + range
+        }
+
+        // Ensure domain includes x = 0 (for y-axis)
+        if (minX > 0) minX = -Math.max(maxX * 0.3, 2)
+        if (maxX < 0) maxX = Math.max(-minX * 0.3, 2)
+
+        // Determine range (y-axis range)
+        let minY, maxY
+        const yAtMinX = a * minX * minX + b * minX + c
+        const yAtMaxX = a * maxX * maxX + b * maxX + c
+        const allYValues = [vertexY, c, yAtMinX, yAtMaxX, 0]
+        minY = Math.min(...allYValues)
+        maxY = Math.max(...allYValues)
+        const padding_y = (maxY - minY) * 0.2
+        minY -= padding_y
+        maxY += padding_y
+
+        // Conversion functions
+        function toCanvasX(x) {
+          return padding + ((x - minX) / (maxX - minX)) * graphWidth
+        }
+
+        function toCanvasY(y) {
+          return (
+            canvas.height - padding - ((y - minY) / (maxY - minY)) * graphHeight
+          )
+        }
+
+        // Draw axes
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+        ctx.beginPath()
+        ctx.moveTo(toCanvasX(0), padding)
+        ctx.lineTo(toCanvasX(0), canvas.height - padding)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.moveTo(padding, toCanvasY(0))
+        ctx.lineTo(canvas.width - padding, toCanvasY(0))
+        ctx.stroke()
+
+        // Draw axis labels
+        ctx.fillStyle = 'black'
+        ctx.font = '12px Arial'
+
+        // X-axis label - centered vertically beside the x-axis
+        ctx.textAlign = 'left'
+        ctx.textBaseline = 'middle'
+        ctx.fillText('x', canvas.width - 15, toCanvasY(0))
+
+        // Y-axis label - centered above the y-axis
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'bottom'
+        ctx.fillText('y', toCanvasX(0), padding - 5)
+
+        // Draw tick marks and labels
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'top'
+
+        // Calculate nice integer tick intervals for x-axis with minimum 40px spacing
+        let xTickInterval = Math.pow(
+          10,
+          Math.floor(Math.log10((maxX - minX) / 5))
+        )
+        let xPixelsPerUnit = graphWidth / (maxX - minX)
+        while (xPixelsPerUnit * xTickInterval < 40) {
+          xTickInterval *= 2
+        }
+        const xStart = Math.ceil(minX / xTickInterval) * xTickInterval
+
+        // Draw light grey vertical grid lines for x-axis ticks
+        ctx.strokeStyle = '#e0e0e0'
+        ctx.lineWidth = 1
+        for (let x = xStart; x <= maxX; x += xTickInterval) {
+          const canvasX = toCanvasX(x)
+          ctx.beginPath()
+          ctx.moveTo(canvasX, padding)
+          ctx.lineTo(canvasX, canvas.height - padding)
+          ctx.stroke()
+        }
+
+        // Draw x-axis tick marks and labels
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+        for (let x = xStart; x <= maxX; x += xTickInterval) {
+          const canvasX = toCanvasX(x)
+          ctx.beginPath()
+          ctx.moveTo(canvasX, toCanvasY(0) - 5)
+          ctx.lineTo(canvasX, toCanvasY(0) + 5)
+          ctx.stroke()
+          ctx.fillText(
+            Number.isInteger(x) ? x : x.toFixed(1),
+            canvasX,
+            toCanvasY(0) + 10
+          )
+        }
+
+        ctx.textAlign = 'right'
+        ctx.textBaseline = 'middle'
+
+        // Calculate nice integer tick intervals for y-axis with minimum 40px spacing
+        let yTickInterval = Math.pow(
+          10,
+          Math.floor(Math.log10((maxY - minY) / 5))
+        )
+        let yPixelsPerUnit = graphHeight / (maxY - minY)
+        while (yPixelsPerUnit * yTickInterval < 40) {
+          yTickInterval *= 2
+        }
+        const yStart = Math.ceil(minY / yTickInterval) * yTickInterval
+
+        // Draw light grey horizontal grid lines for y-axis ticks
+        ctx.strokeStyle = '#e0e0e0'
+        ctx.lineWidth = 1
+        for (let y = yStart; y <= maxY; y += yTickInterval) {
+          const canvasY = toCanvasY(y)
+          ctx.beginPath()
+          ctx.moveTo(padding, canvasY)
+          ctx.lineTo(canvas.width - padding, canvasY)
+          ctx.stroke()
+        }
+
+        // Draw y-axis tick marks and labels
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+        for (let y = yStart; y <= maxY; y += yTickInterval) {
+          const canvasY = toCanvasY(y)
+          ctx.beginPath()
+          ctx.moveTo(toCanvasX(0) - 5, canvasY)
+          ctx.lineTo(toCanvasX(0) + 5, canvasY)
+          ctx.stroke()
+          ctx.fillText(
+            Number.isInteger(y) ? y : y.toFixed(1),
+            toCanvasX(0) - 10,
+            canvasY
+          )
+        }
+
+        // Plot the quadratic function
+        ctx.strokeStyle = 'blue'
+        ctx.lineWidth = 2
+        ctx.beginPath()
+        let started = false
+        for (let xPixel = 0; xPixel <= graphWidth; xPixel += 2) {
+          const x = minX + (xPixel / graphWidth) * (maxX - minX)
+          const y = a * x * x + b * x + c
+          const canvasX = padding + xPixel
+          const canvasY = toCanvasY(y)
+
+          if (!started) {
+            ctx.moveTo(canvasX, canvasY)
+            started = true
+          } else {
+            ctx.lineTo(canvasX, canvasY)
+          }
+        }
+        ctx.stroke()
+
+        // Plot roots
+        ctx.fillStyle = 'red'
+        roots.forEach((root) => {
+          const x = toCanvasX(root)
+          const y = toCanvasY(0)
+          ctx.beginPath()
+          ctx.arc(x, y, 5, 0, 2 * Math.PI)
+          ctx.fill()
+        })
+
+        // Plot vertex
+        ctx.fillStyle = 'green'
+        const vertexCanvasX = toCanvasX(vertexX)
+        const vertexCanvasY = toCanvasY(vertexY)
+        ctx.beginPath()
+        ctx.arc(vertexCanvasX, vertexCanvasY, 5, 0, 2 * Math.PI)
+        ctx.fill()
+
+        // Plot y-intercept
+        ctx.fillStyle = 'purple'
+        const yInterceptCanvasX = toCanvasX(0)
+        const yInterceptCanvasY = toCanvasY(c)
+        ctx.beginPath()
+        ctx.arc(yInterceptCanvasX, yInterceptCanvasY, 5, 0, 2 * Math.PI)
+        ctx.fill()
+
+        // Legend
+        ctx.font = 'bold 12px Arial'
+        ctx.textAlign = 'left'
+        ctx.textBaseline = 'top'
+        let legendY = 10
+
+        ctx.fillStyle = 'red'
+        ctx.fillRect(10, legendY, 12, 12)
+        ctx.fillStyle = 'black'
+        ctx.fillText('Roots', 25, legendY)
+
+        ctx.fillStyle = 'green'
+        ctx.fillRect(10, legendY + 20, 12, 12)
+        ctx.fillStyle = 'black'
+        ctx.fillText('Vertex', 25, legendY + 20)
+
+        ctx.fillStyle = 'purple'
+        ctx.fillRect(10, legendY + 40, 12, 12)
+        ctx.fillStyle = 'black'
+        ctx.fillText('Y-intercept', 25, legendY + 40)
+      }
+
+      document.getElementById('calc').addEventListener('click', function () {
+        const a = parseFloat(document.getElementById('a').value)
+        const b = parseFloat(document.getElementById('b').value)
+        const c = parseFloat(document.getElementById('c').value)
+
+        let html = ''
+        const discriminant = b * b - 4 * a * c
+
+        let solutionText = ''
+
+        if (discriminant > 0) {
+          const root1 = (-b + Math.sqrt(discriminant)) / (2 * a)
+          const root2 = (-b - Math.sqrt(discriminant)) / (2 * a)
+          solutionText = `Two real solutions: x₁ = ${root1.toFixed(
+            2
+          )}, x₂ = ${root2.toFixed(2)}`
+        } else if (discriminant === 0) {
+          const root = -b / (2 * a)
+          solutionText = `One real solution: x = ${root.toFixed(2)}`
+        } else {
+          solutionText = 'No real solutions.'
+        }
+        html += solutionText + '<br/>'
+
+        // vertex
+        const vertexX = -b / (2 * a)
+        const vertexY = c - (b * b) / (4 * a)
+
+        html +=
+          `Vertex: (${vertexX.toFixed(2)}, ${vertexY.toFixed(2)})` + '<br/>'
+
+        // y-intercept
+        html += `Y-intercept: (0, ${c.toFixed(2)})`
+
+        document.getElementById('displaySolution').innerHTML = html
+        plotGraph(a, b, c)
+      })
+    </script>
+  </body>
+</html>
